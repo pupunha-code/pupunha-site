@@ -1,11 +1,181 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import TerminalWindow from '../components/TerminalWindow.astro';
+import TerminalLine from '../components/TerminalLine.astro';
 ---
 
 <Layout>
-	<Welcome />
+	<main class="terminal-container">
+		<TerminalWindow class="index-terminal">
+			<TerminalLine command="cat welcome.txt" />
+			
+			<section class="welcome-section">
+				<img src="/hero.png" alt="PupunhaCode" class="hero-image" />
+				
+				<div class="brand-info">
+					<h1 class="brand-title">
+						<span class="brand-pupunha">Pupunha</span><span class="brand-code">Code</span>
+					</h1>
+					<div class="brand-description">
+						<p>
+							O nosso objetivo é ajudar a comunidade de desenvolvedores do Amapá a crescer e se conectar, divulgando projetos, eventos e oportunidades e fofocar sobre tecnologia. :)
+							<br>
+							Se você é desenvolvedor e quer se conectar com a nossa comunidade, participe do desafio inicial e manda pra gente!
+						</p>
+					</div>
+				</div>
+			</section>
+			
+			<TerminalLine command="ls links/" />
+			
+			<section class="links-section">
+				<div class="file-list">
+					<a href="/como-participar" class="file-link">
+						<span class="file-icon">🎯</span> como-participar.md
+					</a>
+					<a href="https://discord.gg/pupunha" class="file-link">
+						<span class="file-icon">💬</span> discord.gg/pupunha
+					</a>
+					<a href="https://github.com/pupunha-code" class="file-link">
+						<span class="file-icon">📂</span> github.com/pupunha-code
+					</a>
+				</div>
+			</section>
+			
+			<TerminalLine command="" blinkingCursor={true} />
+		</TerminalWindow>
+	</main>
 </Layout>
+
+<style>
+
+	.terminal-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		padding-top: 6rem;
+
+	}
+	/* Terminal Window Override for Index */
+	.index-terminal {
+		max-width: 800px;
+	}
+
+	/* Welcome Section */
+	.welcome-section {
+		margin: var(--space-lg) 0;
+		text-align: center;
+		padding: var(--space-md);
+		background: rgba(0, 255, 65, 0.05);
+		border: 1px solid rgba(0, 255, 65, 0.2);
+		border-radius: var(--radius-md);
+	}
+
+	.hero-image {
+		max-width: 100%;
+		height: auto;
+		max-height: 200px;
+		margin-bottom: var(--space-md);
+		border-radius: var(--radius-sm);
+		filter: brightness(0.9);
+	}
+
+	.brand-title {
+		font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		font-size: clamp(2.5rem, 7vw, 4rem);
+		font-weight: 900;
+		margin: 0 0 var(--space-xs) 0;
+		line-height: 0.9;
+		letter-spacing: -0.02em;
+		text-transform: uppercase;
+		text-shadow: 
+			0 0 30px rgba(76, 175, 80, 0.4),
+			0 2px 4px rgba(0, 0, 0, 0.3);
+		filter: drop-shadow(0 0 10px rgba(76, 175, 80, 0.2));
+	}
+
+	.brand-pupunha {
+		color: var(--color-primary);
+	}
+
+	.brand-code {
+		color: var(--color-secondary);
+	}
+
+	.brand-description p {
+		font-size: clamp(0.85rem, 2vw, 1rem);
+		color: var(--color-text-secondary);
+		margin: var(--space-sm) 0 0 0;
+		font-weight: 400;
+		line-height: 1.5;
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	/* Links Section */
+	.links-section {
+		margin: var(--space-md) 0;
+		padding-left: var(--space-sm);
+	}
+
+	.file-list {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-xs);
+	}
+
+	.file-link {
+		color: var(--color-accent);
+		text-decoration: none;
+		font-size: 0.9rem;
+		display: flex;
+		align-items: center;
+		gap: var(--space-xs);
+		padding: var(--space-xs);
+		border-radius: var(--radius-sm);
+		transition: var(--transition-fast);
+	}
+
+	.file-link:hover {
+		background: rgba(79, 195, 247, 0.1);
+		color: #81D4FA;
+		transform: translateX(8px);
+	}
+
+	.file-icon {
+		font-size: var(--font-md);
+	}
+
+	/* Animations */
+	@keyframes rainbow-border {
+		0%, 100% { opacity: 0.2; }
+		50% { opacity: 0.4; }
+	}
+
+	/* Responsive Design */
+	@media (max-width: 768px) {
+		.welcome-section {
+			padding: var(--space-sm);
+		}
+
+		.hero-image {
+			max-height: 150px;
+		}
+
+		.file-link {
+			font-size: var(--font-sm);
+		}
+	}
+
+	@media (max-width: 480px) {
+		.welcome-section {
+			margin: var(--space-sm) 0;
+		}
+
+		.hero-image {
+			max-height: 120px;
+		}
+	}
+</style>

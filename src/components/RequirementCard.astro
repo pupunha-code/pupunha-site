@@ -1,0 +1,164 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  description: string;
+  items: string[];
+  platforms: string;
+  special?: boolean;
+}
+
+const { icon, title, description, items, platforms, special = false } = Astro.props;
+---
+
+<div class={`req-option ${special ? 'special' : ''}`}>
+  <div class="option-header">
+    <span class="option-icon">{icon}</span>
+    <h3>{title}</h3>
+  </div>
+  <div class="option-content">
+    <p>{description}</p>
+    <ul>
+      {items.map(item => <li>{item}</li>)}
+    </ul>
+    <div class="option-platforms">
+      <small>📍 {platforms}</small>
+    </div>
+  </div>
+</div>
+
+<style>
+  .req-option {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: 0;
+    overflow: hidden;
+    transition: var(--transition-normal);
+  }
+
+  .req-option:hover {
+    background: rgba(76, 175, 80, 0.08);
+    border-color: rgba(76, 175, 80, 0.3);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .req-option.special {
+    border-color: rgba(255, 193, 7, 0.3);
+    background: rgba(255, 193, 7, 0.05);
+  }
+
+  .req-option.special:hover {
+    background: rgba(255, 193, 7, 0.1);
+    border-color: rgba(255, 193, 7, 0.5);
+  }
+
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    background: rgba(76, 175, 80, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .option-icon {
+    font-size: var(--font-2xl);
+    flex-shrink: 0;
+  }
+
+  .option-header h3 {
+    color: var(--color-primary);
+    font-size: var(--font-lg);
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .option-content {
+    padding: var(--space-md);
+  }
+
+  .option-content p {
+    color: var(--color-text-primary);
+    font-size: var(--font-md);
+    margin: 0 0 var(--space-sm) 0;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  .option-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-md) 0;
+  }
+
+  .option-content li {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    margin: var(--space-xs) 0;
+    padding-left: var(--space-sm);
+    position: relative;
+    line-height: 1.4;
+  }
+
+  .option-content li::before {
+    content: '▸';
+    color: var(--color-primary);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+  }
+
+  .option-platforms {
+    padding: 0.8rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--color-primary);
+  }
+
+  .option-platforms small {
+    color: var(--color-text-muted);
+    font-size: var(--font-sm);
+    font-style: italic;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .option-header {
+      padding: var(--space-sm);
+      gap: 0.8rem;
+    }
+
+    .option-icon {
+      font-size: var(--font-xl);
+    }
+
+    .option-header h3 {
+      font-size: 1.1rem;
+    }
+
+    .option-content {
+      padding: var(--space-sm);
+    }
+
+    .option-content p {
+      font-size: 0.9rem;
+    }
+
+    .option-content li {
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .option-header {
+      padding: 0.8rem;
+    }
+
+    .option-content {
+      padding: 0.8rem;
+    }
+  }
+</style> 

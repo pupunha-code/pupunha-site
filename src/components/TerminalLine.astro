@@ -1,0 +1,56 @@
+---
+interface Props {
+  prompt?: string;
+  command: string;
+  blinkingCursor?: boolean;
+}
+
+const { 
+  prompt = "user@amapa:~$", 
+  command, 
+  blinkingCursor = false 
+} = Astro.props;
+---
+
+<div class={`terminal-line ${blinkingCursor ? 'cursor-blink' : ''}`}>
+  <span class="prompt">{prompt}</span> 
+  <span class="command">{command}</span>
+  {blinkingCursor && <span class="cursor">_</span>}
+</div>
+
+<style>
+  .terminal-line {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .prompt {
+    color: #4CAF50;
+    font-weight: 600;
+  }
+
+  .command {
+    color: #fff;
+    margin-left: 0.5rem;
+  }
+
+  .cursor {
+    color: #00ff41;
+    font-weight: bold;
+  }
+
+  .cursor-blink {
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  @media (max-width: 768px) {
+    .terminal-line {
+      font-size: 0.8rem;
+    }
+  }
+</style> 

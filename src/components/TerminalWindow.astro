@@ -1,0 +1,95 @@
+---
+interface Props {
+  title?: string;
+  class?: string;
+}
+
+const { title = "pupunha-terminal", class: className = "" } = Astro.props;
+---
+
+<div class={`terminal-window ${className}`}>
+  <div class="terminal-header">
+    <div class="terminal-buttons">
+      <span class="btn red"></span>
+      <span class="btn yellow"></span>
+      <span class="btn green"></span>
+    </div>
+    <div class="terminal-title">{title}</div>
+  </div>
+  
+  <div class="terminal-content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .terminal-window {
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-terminal);
+    max-width: 900px;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--bg-border);
+  }
+
+  .terminal-header {
+    background: var(--bg-secondary);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--bg-border);
+  }
+
+  .terminal-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-right: 1rem;
+  }
+
+  .btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .btn.red { background: #ff5f56; }
+  .btn.yellow { background: #ffbd2e; }
+  .btn.green { background: #27ca3f; }
+
+  .terminal-title {
+    color: var(--color-text-muted);
+    font-size: var(--font-sm);
+    flex: 1;
+    text-align: center;
+  }
+
+  .terminal-content {
+    padding: var(--space-lg);
+    color: var(--color-secondary);
+    line-height: 1.6;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  @media (max-width: 768px) {
+    .terminal-content {
+      padding: var(--space-md) var(--space-sm);
+      max-height: 85vh;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .terminal-header {
+      padding: var(--space-xs);
+    }
+
+    .terminal-title {
+      font-size: var(--font-xs);
+    }
+
+    .terminal-content {
+      padding: var(--space-sm);
+    }
+  }
+</style> 

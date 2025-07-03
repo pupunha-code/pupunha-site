@@ -1,11 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<meta name="description" content="PupunhaCode - Comunidade de desenvolvedores do Amapá, Brasil" />
+		<meta name="keywords" content="developers, amapá, brasil, pupunha, coding, community, tech, amazonia" />
+		<title>PupunhaCode - Comunidade Dev do Amapá</title>
+		
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<slot />
@@ -13,10 +21,22 @@
 </html>
 
 <style>
+	/* Import global styles */
+	@import '../styles/global.css';
+
+	/* Base reset and layout */
 	html,
 	body {
 		margin: 0;
+		padding: 0;
 		width: 100%;
 		height: 100%;
+		font-family: 'Azeret Mono', monospace;
+		overflow-x: hidden;
+		background: var(--bg-primary);
+	}
+	
+	* {
+		box-sizing: border-box;
 	}
 </style>

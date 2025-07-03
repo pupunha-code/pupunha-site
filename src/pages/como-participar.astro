@@ -1,0 +1,354 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TerminalWindow from '../components/TerminalWindow.astro';
+import TerminalLine from '../components/TerminalLine.astro';
+import RequirementCard from '../components/RequirementCard.astro';
+
+const requirements = [
+  {
+    icon: '📝',
+    title: 'Artigo ou Tutorial',
+    description: 'Compartilhe conhecimento através da escrita:',
+    items: [
+      'Tutorial sobre alguma tecnologia',
+      'Sua experiência em um projeto',
+      'Dicas técnicas que você aprendeu'
+    ],
+    platforms: 'Blog pessoal, LinkedIn, Medium, Dev.to...'
+  },
+  {
+    icon: '💻',
+    title: 'Projeto Pessoal',
+    description: 'Mostre algo que você desenvolveu:',
+    items: [
+      'App, site ou ferramenta útil',
+      'Biblioteca ou componente',
+      'API ou serviço funcional'
+    ],
+    platforms: 'GitHub, GitLab, portfólio online...'
+  },
+  {
+    icon: '🤝',
+    title: 'Contribuição Open Source',
+    description: 'Colabore com a comunidade global:',
+    items: [
+      'Pull Request em projeto existente',
+      'Reportar e resolver issues',
+      'Melhorar documentação'
+    ],
+    platforms: 'GitHub, GitLab, projetos OSS...'
+  },
+  {
+    icon: '🌟',
+    title: 'Iniciativa Especial',
+    description: 'Algo criativo que beneficie a comunidade:',
+    items: [
+      'Palestra ou apresentação',
+      'Organizar evento ou meetup',
+      'Mentoria ou ensino'
+    ],
+    platforms: 'Evidência da atividade realizada...',
+    special: true
+  }
+];
+---
+
+<Layout>
+	<main class="terminal-container">
+		<TerminalWindow title="pupunha-participacao-terminal">
+			<TerminalLine prompt="dev@amapa:~$" command="cat desafio-pupunha.txt" />
+			
+			<section class="challenge-header">
+				<pre class="ascii-art">
+ ____              _             _             _____
+ |  _ \ _   _ _ __ | |_ _ _ __   | |__   __ _  /  ___|
+ | |_) | | | | '_ \| | | | '_ \  |  _ \ / _` | | |  
+ |  __/| |_| | |_) | | |_| | | | | | | | (_| | | |__
+ |_|    \__,_| .__/|_|_|_|_| |_| |_| |_|\__,_|  \___|
+               |_|                                      
+ ____           _      
+/ ___|___  __ _| | ___ 
+| |   / _ \/ _` | |/ _ \
+| |__| (_) | (_| |  __/
+\____\___/ \__,_|\___|
+				</pre>
+				<div class="challenge-subtitle">
+					<span class="typing-text">Como Fazer Parte da Comunidade</span>
+				</div>
+			</section>
+
+			<TerminalLine prompt="dev@amapa:~$" command="echo 'Mostre seu trabalho e entre na comunidade!'" />
+
+			<section class="mission-section">
+				<p class="mission-text">
+					✨ <strong>Compartilhe algo que você criou</strong> para mostrar seu interesse genuíno em fazer parte da nossa comunidade tech do Amapá.
+				</p>
+			</section>
+
+			<TerminalLine prompt="dev@amapa:~$" command="ls requisitos/" />
+			
+			<section class="requirements-section">
+				<div class="req-intro">
+					<p>Escolha uma das opções abaixo:</p>
+				</div>
+
+				<div class="req-grid">
+					{requirements.map(req => (
+						<RequirementCard 
+							icon={req.icon}
+							title={req.title}
+							description={req.description}
+							items={req.items}
+							platforms={req.platforms}
+							special={req.special}
+						/>
+					))}
+				</div>
+			</section>
+
+			<TerminalLine prompt="dev@amapa:~$" command="cat como-enviar.md" />
+
+			<section class="submission-section">
+				<div class="submission-box">
+					<h3>🚀 Próximos Passos</h3>
+					<ol class="submission-steps">
+						<li>Escolha uma das opções acima e complete</li>
+						<li>Prepare um link ou evidência do seu trabalho</li>
+						<li>Entre no nosso Discord</li>
+						<li>Compartilhe seu trabalho na comunidade</li>
+						<li>Conecte-se com outros devs do Amapá!</li>
+					</ol>
+					
+					<div class="submission-cta">
+						<a href="https://discord.gg/pupunha" class="terminal-button">
+							<span class="button-text">ENTRAR NO DISCORD</span>
+							<span class="button-arrow">→</span>
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<TerminalLine prompt="dev@amapa:~$" command="cd ../" />
+
+			<section class="back-section">
+				<a href="/" class="back-link">
+					<span class="back-icon">←</span> Voltar para home
+				</a>
+			</section>
+
+			<TerminalLine prompt="dev@amapa:~$" command="" blinkingCursor={true} />
+		</TerminalWindow>
+	</main>
+</Layout>
+
+<style>
+
+.terminal-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		padding-top: 6rem;
+
+	}
+
+	/* Challenge Header */
+	.challenge-header {
+		margin: var(--space-lg) 0;
+		text-align: center;
+		padding: var(--space-lg);
+		background: rgba(76, 175, 80, 0.05);
+		border: 1px solid rgba(76, 175, 80, 0.2);
+		border-radius: var(--radius-md);
+	}
+
+	.ascii-art {
+		color: var(--color-primary);
+		font-size: 0.7rem;
+		margin: 0 0 var(--space-sm) 0;
+		overflow-x: auto;
+		white-space: pre;
+		font-family: monospace;
+		line-height: 1.2;
+	}
+
+	.challenge-subtitle {
+		color: var(--color-text-primary);
+		font-size: var(--font-lg);
+		font-weight: 600;
+	}
+
+	.typing-text {
+		animation: typewriter 2s ease-in-out;
+	}
+
+	/* Mission Section */
+	.mission-section {
+		margin: var(--space-md) 0;
+		padding: var(--space-sm);
+		background: rgba(255, 193, 7, 0.1);
+		border-left: 4px solid var(--color-warning);
+		border-radius: var(--radius-sm);
+	}
+
+	.mission-text {
+		color: var(--color-text-primary);
+		margin: 0;
+		font-size: var(--font-md);
+		line-height: 1.5;
+	}
+
+	/* Requirements Section */
+	.requirements-section {
+		margin: var(--space-lg) 0;
+	}
+
+	.req-intro {
+		text-align: center;
+		margin-bottom: var(--space-lg);
+		padding: var(--space-sm);
+	}
+
+	.req-intro p {
+		color: var(--color-text-primary);
+		font-size: 1.1rem;
+		margin: 0;
+		font-weight: 500;
+	}
+
+	.req-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: var(--space-lg);
+		padding: 0 var(--space-sm);
+	}
+
+	/* Submission Section */
+	.submission-section {
+		margin: var(--space-lg) 0;
+	}
+
+	.submission-box {
+		background: rgba(0, 255, 65, 0.05);
+		border: 1px solid rgba(0, 255, 65, 0.2);
+		padding: var(--space-lg);
+		border-radius: var(--radius-md);
+		text-align: center;
+	}
+
+	.submission-box h3 {
+		color: var(--color-primary);
+		margin: 0 0 var(--space-md) 0;
+		font-size: 1.3rem;
+	}
+
+	.submission-steps {
+		color: var(--color-text-primary);
+		text-align: left;
+		max-width: 400px;
+		margin: 0 auto var(--space-lg) auto;
+		font-size: 0.95rem;
+		line-height: 1.6;
+	}
+
+	.submission-steps li {
+		margin: 0.8rem 0;
+		color: var(--color-text-secondary);
+	}
+
+	.terminal-button {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-xs);
+		background: var(--color-primary);
+		color: var(--color-text-dark);
+		padding: var(--space-sm) var(--space-lg);
+		text-decoration: none;
+		font-weight: 700;
+		font-size: var(--font-md);
+		border-radius: var(--radius-sm);
+		transition: var(--transition-fast);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.terminal-button:hover {
+		background: #45a049;
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+	}
+
+	/* Back Section */
+	.back-section {
+		margin: var(--space-lg) 0 var(--space-sm) 0;
+		text-align: center;
+	}
+
+	.back-link {
+		color: var(--color-accent);
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-xs);
+		padding: var(--space-xs) var(--space-sm);
+		border-radius: var(--radius-sm);
+		transition: var(--transition-fast);
+		font-size: 0.9rem;
+	}
+
+	.back-link:hover {
+		background: rgba(79, 195, 247, 0.1);
+		color: #81D4FA;
+		transform: translateX(-4px);
+	}
+
+	/* Animations */
+	@keyframes typewriter {
+		0% { width: 0; }
+		100% { width: 100%; }
+	}
+
+	/* Responsive Design */
+	@media (max-width: 768px) {
+		.challenge-header {
+			padding: var(--space-md);
+		}
+
+		.ascii-art {
+			font-size: 0.5rem;
+		}
+
+		.req-grid {
+			grid-template-columns: 1fr;
+			gap: var(--space-md);
+			padding: 0;
+		}
+
+		.submission-box {
+			padding: var(--space-md);
+		}
+	}
+
+	@media (max-width: 480px) {
+		.challenge-header {
+			padding: var(--space-sm);
+		}
+
+		.ascii-art {
+			font-size: 0.4rem;
+		}
+
+		.challenge-subtitle {
+			font-size: var(--font-md);
+		}
+
+		.submission-box {
+			padding: var(--space-sm);
+		}
+
+		.terminal-button {
+			padding: 0.8rem 1.5rem;
+			font-size: 0.9rem;
+		}
+	}
+</style> 
