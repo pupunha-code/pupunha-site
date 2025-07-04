@@ -1,0 +1,8 @@
+name = "landing"
+compatibility_date = "2025-07-04"
+
+[env.production]
+name = "landing"
+
+# For Pages deployment
+pages_build_output_dir = "dist"
