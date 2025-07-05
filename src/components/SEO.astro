@@ -1,0 +1,153 @@
+---
+import { 
+  SITE_TITLE, 
+  SITE_DESCRIPTION, 
+  SITE_URL, 
+  SITE_IMAGE, 
+  SITE_KEYWORDS, 
+  SITE_AUTHOR, 
+  SITE_CREATOR, 
+  SITE_LANGUAGE, 
+  SITE_THEME_COLOR,
+  ORGANIZATION 
+} from '../constants/site';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  keywords?: string[];
+  author?: string;
+  type?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
+  section?: string;
+  noindex?: boolean;
+  canonical?: string;
+}
+
+const {
+  title = SITE_TITLE,
+  description = SITE_DESCRIPTION,
+  image = SITE_IMAGE,
+  keywords = SITE_KEYWORDS,
+  author = SITE_AUTHOR,
+  type = 'website',
+  publishedTime,
+  modifiedTime,
+  section,
+  noindex = false,
+  canonical = Astro.url.href
+} = Astro.props;
+
+const fullImage = image.startsWith('http') ? image : `${SITE_URL}${image}`;
+const keywordsString = keywords.join(', ');
+---
+
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="keywords" content={keywordsString} />
+<meta name="author" content={author} />
+<meta name="creator" content={SITE_CREATOR} />
+<meta name="language" content={SITE_LANGUAGE} />
+<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+<meta name="theme-color" content={SITE_THEME_COLOR} />
+
+<link rel="canonical" href={canonical} />
+
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={fullImage} />
+<meta property="og:image:alt" content={title} />
+<meta property="og:site_name" content="PupunhaCode" />
+<meta property="og:locale" content="pt_BR" />
+{publishedTime && <meta property="article:published_time" content={publishedTime} />}
+{modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+{section && <meta property="article:section" content={section} />}
+{author && <meta property="article:author" content={author} />}
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonical} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={fullImage} />
+<meta name="twitter:image:alt" content={title} />
+<meta name="twitter:creator" content="@pupunhacode" />
+<meta name="twitter:site" content="@pupunhacode" />
+
+<meta name="geo.region" content="BR-AP" />
+<meta name="geo.placename" content="Macapá, Amapá, Brasil" />
+<meta name="geo.position" content="0.0389;-51.0664" />
+<meta name="ICBM" content="0.0389, -51.0664" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{ORGANIZATION.name}",
+  "description": "{ORGANIZATION.description}",
+  "url": "{ORGANIZATION.url}",
+  "logo": "{ORGANIZATION.logo}",
+  "sameAs": {JSON.stringify(ORGANIZATION.sameAs)},
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "{ORGANIZATION.address.addressLocality}",
+    "addressRegion": "{ORGANIZATION.address.addressRegion}",
+    "addressCountry": "{ORGANIZATION.address.addressCountry}"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{title}",
+  "description": "{description}",
+  "url": "{canonical}",
+  "inLanguage": "{SITE_LANGUAGE}",
+  "copyrightHolder": {
+    "@type": "Organization",
+    "name": "{ORGANIZATION.name}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{ORGANIZATION.name}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{ORGANIZATION.logo}"
+    }
+  }
+}
+</script>
+
+{Astro.url.pathname !== '/' && (
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{SITE_URL}"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{title}",
+        "item": "{canonical}"
+      }
+    ]
+  }
+  </script>
+)}
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://discord.gg" />
+<link rel="preconnect" href="https://github.com" /> 
