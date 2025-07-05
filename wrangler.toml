@@ -1,8 +1,6 @@
 name = "landing"
 compatibility_date = "2025-07-04"
 
+# For static sites (output: 'static')
 [env.production]
 name = "landing"
-
-# For Pages deployment
-pages_build_output_dir = "dist"
