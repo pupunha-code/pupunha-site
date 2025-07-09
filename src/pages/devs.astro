@@ -2,16 +2,7 @@
 import Layout from "../layouts/Layout.astro"
 import TerminalWindow from "../components/TerminalWindow.astro"
 import TerminalLine from "../components/TerminalLine.astro"
-const devs = [
-  {
-    name: "Alessandro Rodrigues",
-    github: "https://github.com/alessandrordgs",
-  },
-  {
-    name: "Luma montes",
-    github: "https://github.com/lumamontes",
-  },
-]
+import { devs } from "../../devs-amapa"
 ---
 
 <Layout>
@@ -30,10 +21,23 @@ const devs = [
         <ul class="list-dash">
           {
             devs.map((dev) => (
-              <li class="underline-text">
-                <a href={dev.github} target="_blank" rel="noopener noreferrer">
-                  {dev.name}
-                </a>
+              <li class="underline-text mb-sm">
+                <div class="flex align-items-center">
+                  <img
+                    src={`${dev.github}.png`}
+                    alt={`${dev.name}'s avatar`}
+                    width="30"
+                    height="30"
+                    class="avatar"
+                  />
+                  <a
+                    href={dev.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {dev.name}
+                  </a>
+                </div>
               </li>
             ))
           }
@@ -43,7 +47,6 @@ const devs = [
 
       <section class="submission-section">
         <div class="submission-box">
-
           <div class="submission-cta">
             <a href="/como-participar" class="terminal-button">
               <span class="button-text"> Veja como participar? </span>
@@ -59,13 +62,25 @@ const devs = [
           <span class="back-icon">←</span> Voltar para home
         </a>
       </section>
-
-      <!-- <TerminalLine prompt="dev@amapa:~$" command="" blinkingCursor={true} /> -->
     </TerminalWindow>
   </main>
 </Layout>
 
 <style>
+  .flex {
+    display: flex;
+  }
+  .align-items-center {
+    align-items: center;
+  }
+  .mb-sm {
+    margin-bottom: var(--space-sm);
+  }
+
+  .avatar {
+    border-radius: 50%;
+    margin-right: 8px;
+  }
   .terminal-container {
     display: flex;
     justify-content: center;
