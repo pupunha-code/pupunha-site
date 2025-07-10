@@ -1,0 +1,282 @@
+---
+import Layout from "../layouts/Layout.astro"
+import TerminalWindow from "../components/TerminalWindow.astro"
+import TerminalLine from "../components/TerminalLine.astro"
+import { devs } from "../../devs-amapa"
+---
+
+<Layout>
+  <main class="terminal-container">
+    <TerminalWindow title="pupunha-devs-terminal">
+      <TerminalLine prompt="dev@amapa:~$" command="echo 'sobre devs'" />
+      <section class="mission-section">
+        <p class="mission-text">
+          Conheça os desenvolvedores do Amapá que estão contribuindo para a
+          comunidade PupunhaCode!
+        </p>
+      </section>
+      <TerminalLine prompt="dev@amapa:~$" command="cat devs-amapa.txt" />
+
+      <section class="">
+        <ul class="list-dash">
+          {
+            devs.map((dev) => (
+              <li class="underline-text mb-sm">
+                <div class="flex align-items-center">
+                  <img
+                    src={`${dev.github}.png`}
+                    alt={`${dev.name}'s avatar`}
+                    width="30"
+                    height="30"
+                    class="avatar"
+                  />
+                  <a
+                    href={dev.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {dev.name}
+                  </a>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+      <TerminalLine prompt="dev@amapa:~$" command="echo 'como participar?'" />
+
+      <section class="submission-section">
+        <div class="submission-box">
+          <div class="submission-cta">
+            <a href="/como-participar" class="terminal-button">
+              <span class="button-text"> Veja como participar? </span>
+              <span class="button-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+      <TerminalLine prompt="dev@amapa:~$" command="cd ../" />
+
+      <section class="back-section">
+        <a href="/" class="back-link">
+          <span class="back-icon">←</span> Voltar para home
+        </a>
+      </section>
+    </TerminalWindow>
+  </main>
+</Layout>
+
+<style>
+  .flex {
+    display: flex;
+  }
+  .align-items-center {
+    align-items: center;
+  }
+  .mb-sm {
+    margin-bottom: var(--space-sm);
+  }
+
+  .avatar {
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+  .terminal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 6rem;
+  }
+
+  .list-dash {
+    list-style-type: "- ";
+  }
+  .typing-text {
+    animation: typewriter 2s ease-in-out;
+  }
+
+  .underline-text {
+    text-decoration: underline;
+    text-decoration-color: var(--color-primary);
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+  }
+
+  /* Mission Section */
+  .mission-section {
+    margin: var(--space-md) 0;
+    padding: var(--space-sm);
+    background: rgba(255, 193, 7, 0.1);
+    border-left: 4px solid var(--color-warning);
+    border-radius: var(--radius-sm);
+  }
+
+  .mission-text {
+    color: var(--color-text-primary);
+    margin: 0;
+    font-size: var(--font-md);
+    line-height: 1.5;
+  }
+
+  /* Requirements Section */
+  .requirements-section {
+    margin: var(--space-lg) 0;
+  }
+
+  .req-intro {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    padding: var(--space-sm);
+  }
+
+  .req-intro p {
+    color: var(--color-text-primary);
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  .req-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+    padding: 0 var(--space-sm);
+  }
+
+  /* Submission Section */
+  .submission-section {
+    margin: var(--space-lg) 0;
+  }
+
+  .submission-box {
+    background: rgba(0, 255, 65, 0.05);
+    border: 1px solid rgba(0, 255, 65, 0.2);
+    padding: var(--space-lg);
+    border-radius: var(--radius-md);
+    text-align: center;
+  }
+
+  .submission-box h3 {
+    color: var(--color-primary);
+    margin: 0 0 var(--space-md) 0;
+    font-size: 1.3rem;
+  }
+
+  .submission-steps {
+    color: var(--color-text-primary);
+    text-align: left;
+    max-width: 400px;
+    margin: 0 auto var(--space-lg) auto;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .submission-steps li {
+    margin: 0.8rem 0;
+    color: var(--color-text-secondary);
+  }
+
+  .terminal-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    background: var(--color-primary);
+    color: var(--color-text-dark);
+    padding: var(--space-sm) var(--space-lg);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: var(--font-md);
+    border-radius: var(--radius-sm);
+    transition: var(--transition-fast);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .terminal-button:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+  }
+
+  /* Back Section */
+  .back-section {
+    margin: var(--space-lg) 0 var(--space-sm) 0;
+    text-align: center;
+  }
+
+  .back-link {
+    color: var(--color-accent);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    transition: var(--transition-fast);
+    font-size: 0.9rem;
+  }
+
+  .back-link:hover {
+    background: rgba(79, 195, 247, 0.1);
+    color: #81d4fa;
+    transform: translateX(-4px);
+  }
+
+  /* Animations */
+  @keyframes typewriter {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .challenge-header {
+      padding: var(--space-md);
+    }
+
+    .ascii-art {
+      font-size: 0.5rem;
+    }
+
+    .req-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+      padding: 0;
+    }
+
+    .submission-box {
+      padding: var(--space-md);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .challenge-header {
+      padding: var(--space-sm);
+    }
+
+    .ascii-art {
+      font-size: 0.4rem;
+    }
+
+    .challenge-subtitle {
+      font-size: var(--font-md);
+    }
+
+    .submission-box {
+      padding: var(--space-sm);
+    }
+
+    .terminal-button {
+      padding: 0.8rem 1.5rem;
+      font-size: 0.9rem;
+    }
+  }
+</style>
