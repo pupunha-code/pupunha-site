@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://pupunhacode.com/sitemap.xml
+
+# Crawl delay for bots
+Crawl-delay: 10
+
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 5
+
+# Block access to development files
+Disallow: /src/
+Disallow: /*.ts
+Disallow: /*.js.map
+Disallow: /.git/
+Disallow: /node_modules/ 

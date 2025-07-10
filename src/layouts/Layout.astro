@@ -1,3 +1,23 @@
+---
+import SEO from '../components/SEO.astro';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  keywords?: string[];
+  author?: string;
+  type?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
+  section?: string;
+  noindex?: boolean;
+  canonical?: string;
+}
+
+const seoProps = Astro.props;
+---
+
 <!doctype html>
 <html lang="pt-BR">
 	<head>
@@ -5,13 +25,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content="PupunhaCode - Comunidade de desenvolvedores do Amapá, Brasil" />
-		<meta name="keywords" content="developers, amapá, brasil, pupunha, coding, community, tech, amazonia" />
-		<title>PupunhaCode - Comunidade Dev do Amapá</title>
+		
+		<!-- SEO Component -->
+		<SEO {...seoProps} />
 		
 		<!-- Fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 	</head>

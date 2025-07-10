@@ -2,9 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 import TerminalWindow from '../components/TerminalWindow.astro';
 import TerminalLine from '../components/TerminalLine.astro';
+import { DISCORD_URL, GITHUB_URL } from '../constants/site';
 ---
 
-<Layout>
+<Layout
+	title="PupunhaCode - Comunidade Dev do Amapá"
+	description="Comunidade de desenvolvedores do Amapá, Brasil. Conecte-se com devs locais, participe de projetos e faça parte da revolução tech na Amazônia."
+	keywords={['desenvolvedores amapá', 'comunidade tech amazônia', 'developers amapá', 'programadores macapá', 'tecnologia norte brasil', 'pupunha code']}
+	type="website"
+>
 	<main class="terminal-container">
 		<TerminalWindow class="index-terminal">
 			<TerminalLine command="cat welcome.txt" />
@@ -36,10 +42,10 @@ import TerminalLine from '../components/TerminalLine.astro';
 					<a href="/devs" class="file-link">
 						<span class="file-icon">🖥️</span> devs-amapa.txt
 					</a>
-					<a href="https://discord.gg/pupunha" class="file-link">
+					<a href={DISCORD_URL} class="file-link">
 						<span class="file-icon">💬</span> discord.gg/pupunha
 					</a>
-					<a href="https://github.com/pupunha-code" class="file-link">
+					<a href={GITHUB_URL} class="file-link">
 						<span class="file-icon">📂</span> github.com/pupunha-code
 					</a>
 				</div>

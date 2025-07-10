@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import TerminalWindow from '../components/TerminalWindow.astro';
 import TerminalLine from '../components/TerminalLine.astro';
 import RequirementCard from '../components/RequirementCard.astro';
-
+import { DISCORD_URL } from '../constants/site';
 const requirements = [
   {
     icon: '📝',
@@ -53,7 +53,12 @@ const requirements = [
 ];
 ---
 
-<Layout>
+<Layout
+	title="Como Participar - PupunhaCode"
+	description="Junte-se à comunidade PupunhaCode! Compartilhe um projeto, tutorial ou contribuição open source e conecte-se com desenvolvedores do Amapá."
+	keywords={['participar pupunha code', 'como entrar comunidade dev amapá', 'projetos desenvolvedores amazônia', 'tutorial tech amapá', 'open source brasil']}
+	type="website"
+>
 	<main class="terminal-container">
 		<TerminalWindow title="pupunha-participacao-terminal">
 			<TerminalLine prompt="dev@amapa:~$" command="cat desafio-pupunha.txt" />
@@ -120,7 +125,7 @@ const requirements = [
 					</ol>
 					
 					<div class="submission-cta">
-						<a href="https://discord.gg/pupunha" class="terminal-button">
+						<a href={DISCORD_URL} class="terminal-button">
 							<span class="button-text">ENTRAR NO DISCORD</span>
 							<span class="button-arrow">→</span>
 						</a>
@@ -148,7 +153,7 @@ const requirements = [
 		justify-content: center;
 		align-items: center;
 		width: 100%;
-		padding-top: 6rem;
+		padding-top: 2rem;
 
 	}
 
