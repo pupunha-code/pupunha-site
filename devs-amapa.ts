@@ -8,8 +8,7 @@ export const devs: Dev[] = [
     "github": "https://github.com/alessandrordgs",
   },
   {
-    "name": "Luma montes",
+    "name": "Luma Montes",
     "github": "https://github.com/lumamontes",
-
   } 
 ]
