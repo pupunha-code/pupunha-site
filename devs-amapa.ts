@@ -22,7 +22,8 @@ export const devs: Dev[] = [
   {
     "name": "Lorena Montes",
     "github": "https://github.com/lorenalgm",
-},
+  },
+  {
     "name": "Caio Quintas",
     "github": "https://github.com/Quinntas",
   },
