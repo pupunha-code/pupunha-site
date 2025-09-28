@@ -1,4 +1,4 @@
-export const DISCORD_URL = 'https://discord.gg/TK6qawcd';
+export const DISCORD_URL = 'https://discord.gg/eek5VsPYGt';
 export const GITHUB_URL = 'https://github.com/pupunha-code';
 
 export const SITE_TITLE = 'PupunhaCode - Comunidade Dev do Amapá';
