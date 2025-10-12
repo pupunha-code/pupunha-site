@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Logo from '../components/Logo.astro';
+---
+
+<Layout
+  title="Quem Somos - PupunhaCode"
+  description="Conheça a PupunhaCode, a comunidade de desenvolvedores do Amapá que conecta, inspira e fortalece o ecossistema tech da Amazônia."
+  keywords={['pupunha code', 'quem somos', 'comunidade tech amapá', 'desenvolvedores amazônia']}
+>
+  <main class="bg-neutral-900 min-h-screen pt-16">
+    <div class="container mx-auto px-4 py-16">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+          <Logo as="h1" class="text-3xl sm:text-4xl mb-6" />
+          <p class="text-xl text-neutral-300 max-w-2xl mx-auto">
+            Somos uma comunidade de desenvolvedores do Amapá com o objetivo de conectar, inspirar e fortalecer o ecossistema tech da nossa região.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 mb-16">
+          <div class="space-y-6">
+            <h2 class="text-2xl font-bold text-secondary font-azeret">Nossa Missão</h2>
+            <p class="text-neutral-300 leading-relaxed">
+              Ajudar a comunidade de desenvolvedores do Amapá a crescer e se conectar, divulgando projetos, eventos, oportunidades e compartilhando conhecimento sobre tecnologia.
+            </p>
+            <p class="text-neutral-300 leading-relaxed">
+              Acreditamos no poder da colaboração e no potencial da Amazônia para se tornar um grande hub de inovação tecnológica no Brasil.
+            </p>
+          </div>
+
+          <div class="space-y-6">
+            <h2 class="text-2xl font-bold text-secondary font-azeret">Nossa Visão</h2>
+            <p class="text-neutral-300 leading-relaxed">
+              Ser a principal referência em comunidade tech do Amapá, conectando desenvolvedores locais e criando oportunidades de crescimento profissional e pessoal.
+            </p>
+            <p class="text-neutral-300 leading-relaxed">
+              Queremos mostrar que a inovação e a tecnologia podem florescer em qualquer lugar, especialmente na nossa bela região amazônica.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-neutral-800 rounded-lg p-8">
+          <h2 class="text-2xl font-bold text-secondary font-azeret mb-6 text-center">Por que PupunhaCode?</h2>
+          <p class="text-neutral-300 leading-relaxed text-center max-w-3xl mx-auto">
+            A pupunha é um fruto típico da região amazônica, nutritivo e versátil. Assim como a pupunha alimenta e fortalece, nossa comunidade nutre o crescimento dos desenvolvedores locais, oferecendo conhecimento, networking e oportunidades para todos crescerem juntos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

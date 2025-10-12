@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import { DISCORD_URL } from '../constants/site';
+---
+
+<Layout
+  title="Blog - PupunhaCode"
+  description="Leia artigos sobre tecnologia, desenvolvimento e a comunidade tech do Amapá no blog da PupunhaCode."
+  keywords={['blog tech amapá', 'artigos desenvolvimento', 'pupunha code blog', 'tecnologia amazônia']}
+>
+  <main class="bg-neutral-900 min-h-screen pt-16">
+    <div class="container mx-auto px-4 py-16">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+          <h1 class="text-3xl sm:text-4xl font-bold text-secondary font-azeret mb-6">Blog</h1>
+          <p class="text-xl text-neutral-300 max-w-2xl mx-auto">
+            Artigos, tutoriais e reflexões sobre tecnologia, desenvolvimento e a comunidade tech da Amazônia.
+          </p>
+        </div>
+
+        <div class="bg-neutral-800 rounded-lg p-12 text-center">
+          <div class="max-w-md mx-auto">
+            <div class="text-6xl mb-6">📝</div>
+            <h2 class="text-2xl font-bold text-white font-azeret mb-4">Em Breve!</h2>
+            <p class="text-neutral-300 mb-6">
+              Estamos preparando conteúdos incríveis para compartilhar com vocês. Nosso blog contará com artigos técnicos, experiências da comunidade e muito mais.
+            </p>
+            <div class="space-y-4">
+              <p class="text-sm text-neutral-400">
+                Enquanto isso, que tal participar das discussões no nosso Discord?
+              </p>
+              <Button as="a" href={DISCORD_URL} variant="secondary">
+                Entrar no Discord
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 grid md:grid-cols-3 gap-6">
+          <div class="bg-neutral-800 rounded-lg p-6 text-center">
+            <div class="text-3xl mb-3">🚀</div>
+            <h3 class="font-bold text-white font-azeret mb-2">Tutoriais</h3>
+            <p class="text-neutral-300 text-sm">Guias práticos e passo a passo para tecnologias modernas.</p>
+          </div>
+          <div class="bg-neutral-800 rounded-lg p-6 text-center">
+            <div class="text-3xl mb-3">💡</div>
+            <h3 class="font-bold text-white font-azeret mb-2">Experiências</h3>
+            <p class="text-neutral-300 text-sm">Histórias e aprendizados dos membros da nossa comunidade.</p>
+          </div>
+          <div class="bg-neutral-800 rounded-lg p-6 text-center">
+            <div class="text-3xl mb-3">🌎</div>
+            <h3 class="font-bold text-white font-azeret mb-2">Tech na Amazônia</h3>
+            <p class="text-neutral-300 text-sm">Reflexões sobre tecnologia e inovação na nossa região.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

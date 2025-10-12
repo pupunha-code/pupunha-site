@@ -1,0 +1,124 @@
+---
+import { cn } from '../lib/utils';
+import Logo from './Logo.astro';
+import Button from './Button.astro';
+
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { href: '/quem-somos', label: 'Quem somos' },
+  { href: '/eventos', label: 'Eventos e Meetups' },
+  { href: '/devs', label: 'Devs' },
+  { href: '/como-participar', label: 'Como participar' },
+  { href: '/blog', label: 'Blog' }
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-neutral-900/90 backdrop-blur-md border-b border-neutral-800">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="/" class="block">
+          <Logo as="div" class="text-xl" />
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-8">
+        {navItems.map(item => (
+          <a 
+            href={item.href}
+            class={cn(
+              'font-azeret text-sm font-medium transition-colors hover:text-secondary',
+              currentPath === item.href ? 'text-secondary' : 'text-white'
+            )}
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button 
+          id="mobile-menu-button"
+          class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-secondary hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-secondary"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          <!-- Hamburger icon -->
+          <svg id="menu-icon" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <!-- Close icon -->
+          <svg id="close-icon" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden">
+    <div class="px-2 pt-2 pb-3 space-y-1 bg-neutral-900/95 backdrop-blur-md border-t border-neutral-800">
+      {navItems.map(item => (
+        <a 
+          href={item.href}
+          class={cn(
+            'block px-3 py-2 rounded-md font-azeret text-base font-medium transition-colors',
+            currentPath === item.href 
+              ? 'text-secondary bg-neutral-800' 
+              : 'text-white hover:text-secondary hover:bg-neutral-800'
+          )}
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  let isMenuOpen = false;
+
+  function toggleMenu() {
+    isMenuOpen = !isMenuOpen;
+    
+    if (isMenuOpen) {
+      mobileMenu?.classList.remove('hidden');
+      menuIcon?.classList.add('hidden');
+      closeIcon?.classList.remove('hidden');
+      mobileMenuButton?.setAttribute('aria-expanded', 'true');
+    } else {
+      mobileMenu?.classList.add('hidden');
+      menuIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+      mobileMenuButton?.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  mobileMenuButton?.addEventListener('click', toggleMenu);
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (event) => {
+    const target = event.target as Element;
+    if (isMenuOpen && !mobileMenuButton?.contains(target) && !mobileMenu?.contains(target)) {
+      toggleMenu();
+    }
+  });
+
+  // Close menu on escape key
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && isMenuOpen) {
+      toggleMenu();
+    }
+  });
+</script>

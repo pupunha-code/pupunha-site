@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Logo from '../components/Logo.astro';
+import Button from '../components/Button.astro';
+import { DISCORD_URL } from '../constants/site';
+---
+
+<Layout
+  title="Eventos e Meetups - PupunhaCode"
+  description="Participe dos eventos e meetups da PupunhaCode. Conecte-se com outros desenvolvedores do Amapá e participe de discussões sobre tecnologia."
+  keywords={['eventos tech amapá', 'meetups desenvolveres', 'pupunha code eventos', 'tecnologia amapá']}
+>
+  <main class="bg-neutral-900 min-h-screen pt-16">
+    <div class="container mx-auto px-4 py-16">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+          <h1 class="text-3xl sm:text-4xl font-bold text-secondary font-azeret mb-6">Eventos e Meetups</h1>
+          <p class="text-xl text-neutral-300 max-w-2xl mx-auto">
+            Conecte-se com outros desenvolvedores, compartilhe conhecimento e participe da nossa comunidade através de eventos presenciais e virtuais.
+          </p>
+        </div>
+
+        <div class="grid gap-8 mb-16">
+          <div class="bg-neutral-800 rounded-lg p-8 border-l-4 border-secondary">
+            <h2 class="text-xl font-bold text-white font-azeret mb-4">🚀 Próximos Eventos</h2>
+            <p class="text-neutral-300 mb-4">
+              Estamos organizando nossos primeiros eventos! Acompanhe nosso Discord para ficar por dentro das novidades e ser o primeiro a saber quando abriremos as inscrições.
+            </p>
+            <Button as="a" href={DISCORD_URL} variant="secondary" size="sm">
+              Entrar no Discord
+            </Button>
+          </div>
+
+          <div class="bg-neutral-800 rounded-lg p-8">
+            <h2 class="text-xl font-bold text-secondary font-azeret mb-6">Tipos de Eventos</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="space-y-4">
+                <div class="flex items-start space-x-3">
+                  <span class="text-primary text-xl">💻</span>
+                  <div>
+                    <h3 class="font-bold text-white font-azeret">Tech Talks</h3>
+                    <p class="text-neutral-300 text-sm">Apresentações sobre tecnologias, metodologias e tendências do mercado.</p>
+                  </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                  <span class="text-primary text-xl">🤝</span>
+                  <div>
+                    <h3 class="font-bold text-white font-azeret">Networking</h3>
+                    <p class="text-neutral-300 text-sm">Eventos para conectar desenvolvedores e criar oportunidades de colaboração.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-4">
+                <div class="flex items-start space-x-3">
+                  <span class="text-primary text-xl">🛠️</span>
+                  <div>
+                    <h3 class="font-bold text-white font-azeret">Workshops</h3>
+                    <p class="text-neutral-300 text-sm">Sessões práticas para aprender novas tecnologias e ferramentas.</p>
+                  </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                  <span class="text-primary text-xl">🏆</span>
+                  <div>
+                    <h3 class="font-bold text-white font-azeret">Hackathons</h3>
+                    <p class="text-neutral-300 text-sm">Competições de programação para resolver problemas reais da nossa região.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-r from-secondary/10 to-primary/10 rounded-lg p-8 border border-secondary/20">
+            <h2 class="text-xl font-bold text-secondary font-azeret mb-4">Quer organizar um evento?</h2>
+            <p class="text-neutral-300 mb-4">
+              Tem uma ideia para um evento ou quer apresentar algo para a comunidade? Entre em contato conosco no Discord! Estamos sempre abertos a novas ideias e colaborações.
+            </p>
+            <Button as="a" href={DISCORD_URL} variant="outline" size="sm">
+              Propor Evento
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
