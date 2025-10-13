@@ -4,7 +4,6 @@ import { DISCORD_URL, GITHUB_URL } from '../constants/site';
 import Logo from '../components/Logo.astro';
 import Button from '../components/Button.astro';
 import heroBackground from '../assets/hero-background.svg';
-import rightArrowIcon from '../assets/ant-design_right-outlined.svg';
 import event1Image from '../assets/event-1.png';
 import event2Image from '../assets/event-2.png';
 import discordMockup from '../assets/discord-mockup.png';
@@ -13,6 +12,8 @@ import { Image } from 'astro:assets';
 import TypewriterText from '../components/TypewriterText.astro';
 import { Icon } from 'astro-icon/components';
 
+// Import only essential Magic UI components
+import { BorderBeam } from '../components/ui/border-beam';
 ---
 
 <Layout
@@ -21,249 +22,349 @@ import { Icon } from 'astro-icon/components';
 	keywords={['desenvolvedores amapá', 'comunidade tech amazônia', 'developers amapá', 'programadores macapá', 'tecnologia norte brasil', 'pupunha code']}
 	type="website"
 >
-	<main class="bg-neutral-900">
-		<section class="min-h-screen flex flex-col justify-center items-center text-center px-4 bg-cover bg-center bg-no-repeat" style={`background-image: url('${heroBackground.src}');`}>
-			<Logo as="h1" class="text-4xl sm:text-5xl mb-4" />
-			<p class="text-white text-lg sm:text-xl mb-8 max-w-2xl">
-				Comunidade de desenvolvedores do Amapá, Brasil.
-			</p>
-			<Button as="a" href={DISCORD_URL} variant="primary" class="mb-4 sm:mb-0 sm:mr-4">
-				Participar da comunidade
-			</Button>
-		</section>
-
-		<!-- //mission section -->
-		<section class="py-16 px-4  text-center">
-			<h2 class="text-3xl sm:text-4xl font-bold mb-4 text-white">
-				<span class="text-secondary">
-					<Image src={rightArrowIcon} alt="Seta apontando para a direita, como se fosse a seta de um terminal" width={32} height={32} class="inline-block mr-2" />
-				</span>
-				Missão
-			</h2>
-			<p class="text-white text-lg sm:text-xl max-w-3xl mx-auto">
-				Fortalecer o ecossistema tech do Amapá, conectando  desenvolvedores, compartilhando conhecimento e criando  oportunidades através de projetos colaborativos, eventos  e mentorias.
-			</p>
-
-			<Image 
-				src={girlCoding}
-				alt="Ilustração de uma mulher programando em um laptop, representando desenvolvedoras na comunidade tech"
-				class="mt-12 mx-auto w-full max-w-md"
-				width={600}
-				height={300}
-			/>
-
-		</section>
-		<!-- //call to action section with typewriter effect -->
-		<section class="py-20 px-4 bg-neutral-900">
-			<div class="container mx-auto max-w-6xl">
-				<div class="text-center mb-16">
-					<h3 class="text-3xl sm:text-4xl font-bold text-white font-azeret mb-4">
-						Junte-se à comunidade e 
-						<TypewriterText 
-							words={['contribua', 'colabore', 'cresça', 'aprenda', 'ensine']}
-							class="block sm:inline"
-						/>
-					</h3>
-				</div>
-
-				<!-- Community Benefits Grid -->
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-					<!-- Compartilhe Conhecimento -->
-					<div class="bg-neutral-800 border border-neutral-700 rounded-lg p-8 hover:border-secondary/50 transition-colors duration-300">
-						<div class="flex items-center space-x-4 mb-6">
-							<div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
-								<Icon name="book" class="w-6 h-6 text-secondary" />
-							</div>
-							<h4 class="text-xl font-bold text-white font-azeret">Compartilhe Conhecimento</h4>
-						</div>
-						<p class="text-neutral-300 mb-4 leading-relaxed">
-							Crie tutoriais, faça talks e ajude outros devs a crescerem junto com você.
-						</p>
-					</div>
-
-					<!-- Participe de Eventos -->
-					<div class="bg-neutral-800 border border-neutral-700 rounded-lg p-8 hover:border-primary/50 transition-colors duration-300">
-						<div class="flex items-center space-x-4 mb-6">
-							<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-								<Icon name="event" class="w-6 h-6 text-primary" />
-							</div>
-							<h4 class="text-xl font-bold text-white font-azeret">Participe de Eventos</h4>
-						</div>
-						<p class="text-neutral-300 mb-4 leading-relaxed">
-							Participe e proponha meetups, workshops e hackathons.
-						</p>
-					</div>
-
-					<!-- Mentoria -->
-					<div class="bg-neutral-800 border border-neutral-700 rounded-lg p-8 hover:border-accent/50 transition-colors duration-300">
-						<div class="flex items-center space-x-4 mb-6">
-							<div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-								<Icon name="handshake" class="w-6 h-6 text-accent" />
-							</div>
-							<h4 class="text-xl font-bold text-white font-azeret">Mentoria</h4>
-						</div>
-						<p class="text-neutral-300 mb-4 leading-relaxed">
-							Guie iniciantes ou aprenda com desenvolvedores seniores.
-						</p>
-					</div>
-
-					<!-- Desenvolva Projetos -->
-					<div class="bg-neutral-800 border border-neutral-700 rounded-lg p-8 hover:border-white/20 transition-colors duration-300">
-						<div class="flex items-center space-x-4 mb-6">
-							<div class="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center">
-								<Icon name="diagram" class="w-6 h-6 text-white" />
-							</div>
-							<h4 class="text-xl font-bold text-white font-azeret">Desenvolva Projetos</h4>
-						</div>
-						<p class="text-neutral-300 mb-4 leading-relaxed">
-							Colabore em projetos open source locais e contribua para o ecossistema tech do Amapá.
-						</p>
-					</div>
-				</div>
+	<main class="bg-neutral-950">
+		<!-- Hero Section - Clean & Modern -->
+		<section class="relative min-h-screen flex items-center px-4 overflow-hidden bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950">
+			<!-- Subtle Background -->
+			<div class="absolute inset-0 ">
+				<Image 
+					src={heroBackground} 
+					alt="Background pattern" 
+					class="w-full h-full object-cover"
+					width={1920}
+					height={1080}
+				/>
 			</div>
-		</section>
-
-		<!-- //eventos e meetups section -->
-		<section class="py-16 px-4" style="background-color: #E26228;">
-			<div class="container mx-auto max-w-6xl">
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-					<!-- Content -->
-					<div>
-						<h2 class="text-3xl sm:text-4xl font-bold mb-6 text-white font-azeret">
-							<Image src={rightArrowIcon} alt="Seta apontando para a direita, como se fosse a seta de um terminal" width={32} height={32} class="inline-block mr-3" />
-							Eventos e Meetups
-						</h2>
-						<p class="text-white text-lg sm:text-xl mb-8 leading-relaxed">
-							Participamos e organizamos eventos voltados para a área tech! Encontros para aprender, fazer networking e fortalecer a comunidade local.
-						</p>
-						<Button as="a" href="/eventos" variant="outline" class="border-white text-white hover:bg-white hover:text-secondary">
-							Ver todos os eventos
+			
+			<!-- Content -->
+			<div class="relative z-10 max-w-7xl mx-auto w-full">
+				<div class="text-center no-underline">
+					<Logo as="h1" class="text-5xl sm:text-6xl lg:text-7xl mb-6" />
+					
+					<p class="text-xl sm:text-2xl text-neutral-400 mb-10 ">
+						Comunidade de desenvolvedores do Amapá
+					</p>
+					
+					<div class="flex flex-wrap gap-4 justify-center">
+						<Button 
+							as="a" 
+							href="/como-participar" 
+							class="no-underline border-neutral-700 text-neutral-300 hover:bg-neutral-800 hover:border-neutral-600 px-8 py-4 text-lg transition-colors"
+						>
+							Participar agora
 						</Button>
 					</div>
+				</div>
+			</div>
+		</section>
 
-					<!-- Images - Desktop only -->
-					<div class="hidden lg:block">
-						<div class="grid grid-cols-2 gap-4">
-							<div class="space-y-4">
-								<Image 
-									src={event1Image} 
-									alt="Meetup PupunhaCode - evento presencial com desenvolvedores" 
-									class="rounded-lg shadow-lg w-full h-auto object-cover"
-									width={300}
-									height={400}
-								/>
-							</div>
-							<div class="pt-8">
-								<Image 
-									src={event2Image} 
-									alt="Apresentação técnica durante evento PupunhaCode" 
-									class="rounded-lg shadow-lg w-full h-auto object-cover"
-									width={300}
-									height={400}
-								/>
-							</div>
+		<!-- Mission Section - Asymmetric Layout -->
+		<section class="py-32 px-4 bg-neutral-900">
+			<div class="max-w-7xl mx-auto">
+				<div class="grid lg:grid-cols-2 gap-16 items-center">
+					<!-- Text Content -->
+					<div class="max-w-xl">
+						<h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">
+							Nossa Missão
+						</h2>
+						
+						<p class="text-lg text-neutral-400 leading-relaxed mb-8">
+							Fortalecer o ecossistema tech do Amapá, conectando desenvolvedores, compartilhando conhecimento e criando oportunidades através de projetos colaborativos, eventos e mentorias.
+						</p>
+						
+						<ul class="space-y-4">
+							<li class="flex items-center gap-3 text-neutral-300">
+								<div class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></div>
+								<span>Conectar talentos locais</span>
+							</li>
+							<li class="flex items-center gap-3 text-neutral-300">
+								<div class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></div>
+								<span>Compartilhar conhecimento</span>
+							</li>
+							<li class="flex items-center gap-3 text-neutral-300">
+								<div class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></div>
+								<span>Criar oportunidades</span>
+							</li>
+						</ul>
+					</div>
+					
+					<!-- Image -->
+					<div class="relative">
+						<div class="relative rounded-2xl overflow-hidden">
+							<Image 
+								src={girlCoding}
+								alt="Desenvolvedora programando"
+								class="w-full h-auto"
+								width={600}
+								height={400}
+							/>
+							<BorderBeam 
+								size={120}
+								duration={12}
+								colorFrom="#a9d788"
+								colorTo="#E26228"
+								className="rounded-2xl"
+							/>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- //community projects section -->
-		<section class="py-16 px-4 bg-neutral-800">
-			<div class="container mx-auto max-w-6xl">
-				<div class="text-center mb-12">
-					<h2 class="text-3xl sm:text-4xl font-bold mb-4 text-white font-azeret">
-						<span class="text-secondary">
-							<Image src={rightArrowIcon} alt="Seta apontando para a direita, como se fosse a seta de um terminal" width={32} height={32} class="inline-block mr-2" />
-						</span>
-						Projetos da Comunidade
+		<!-- Benefits Section - Minimal Cards -->
+		<section class="py-32 px-4 bg-neutral-950">
+			<div class="max-w-7xl mx-auto">
+				<!-- Header -->
+				<div class="max-w-2xl mb-16">
+					<h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+						Junte-se à comunidade e <TypewriterText 
+							words={['contribua', 'colabore', 'cresça', 'aprenda', 'ensine']}
+							class="text-primary inline-block"
+						/>
 					</h2>
-					<p class="text-neutral-300 text-lg max-w-2xl mx-auto">
-						Conheça o que os membros do PupunhaCode estão criando.
+					<p class="text-lg text-neutral-400">
+						Faça parte de uma comunidade ativa de desenvolvedores no Amapá
 					</p>
 				</div>
 
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-					<!-- Landing Page Project -->
-					<div class="bg-neutral-900 border border-neutral-700 rounded-lg p-6 hover:border-primary/50 transition-colors duration-300">
-						<div class="flex items-center space-x-3 mb-4">
-							<div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-								<Icon name="diagram" class="w-5 h-5 text-primary" />
+				<!-- Benefits Grid -->
+				<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+					<!-- Benefit 1 -->
+					<div class="group p-8 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-all duration-300">
+						<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+							<Icon name="book" class="w-6 h-6 text-secondary" />
+						</div>
+						<h3 class="text-lg font-semibold text-white mb-2">
+							Compartilhe Conhecimento
+						</h3>
+						<p class="text-sm text-neutral-400 leading-relaxed">
+							Crie tutoriais, faça talks e ajude outros devs a crescerem
+						</p>
+					</div>
+
+					<!-- Benefit 2 -->
+					<div class="group p-8 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-all duration-300">
+						<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+							<Icon name="event" class="w-6 h-6 text-primary" />
+						</div>
+						<h3 class="text-lg font-semibold text-white mb-2">
+							Participe de Eventos
+						</h3>
+						<p class="text-sm text-neutral-400 leading-relaxed">
+							Meetups, workshops e hackathons presenciais e online
+						</p>
+					</div>
+
+					<!-- Benefit 3 -->
+					<div class="group p-8 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-all duration-300">
+						<div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+							<Icon name="handshake" class="w-6 h-6 text-accent" />
+						</div>
+						<h3 class="text-lg font-semibold text-white mb-2">
+							Mentoria
+						</h3>
+						<p class="text-sm text-neutral-400 leading-relaxed">
+							Guie iniciantes ou aprenda com desenvolvedores experientes
+						</p>
+					</div>
+
+					<!-- Benefit 4 -->
+					<div class="group p-8 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-all duration-300">
+						<div class="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+							<Icon name="diagram" class="w-6 h-6 text-white" />
+						</div>
+						<h3 class="text-lg font-semibold text-white mb-2">
+							Desenvolva Projetos
+						</h3>
+						<p class="text-sm text-neutral-400 leading-relaxed">
+							Colabore em projetos open source e contribua para o ecossistema
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Events Section - Bold Background -->
+		<section class="relative py-32 px-4 bg-gradient-to-br from-secondary to-accent overflow-hidden">
+			<div class="max-w-7xl mx-auto">
+				<div class="grid lg:grid-cols-2 gap-16 items-center">
+					<!-- Content -->
+					<div class="text-white">
+						<h2 class="text-3xl sm:text-4xl font-bold mb-6">
+							Eventos e Meetups
+						</h2>
+						
+						<p class="text-lg text-white/90 mb-8 leading-relaxed">
+							Participamos e organizamos eventos voltados para a área tech. Encontros para aprender, fazer networking e fortalecer a comunidade local.
+						</p>
+						
+						<div class="flex flex-wrap gap-4">
+							<Button 
+								as="a" 
+								href="/eventos" 
+								class="bg-white text-secondary hover:bg-neutral-100 px-8 py-4 text-lg font-semibold transition-colors"
+							>
+								Ver todos os eventos
+							</Button>
+							<Button 
+								as="a" 
+								href="/como-participar" 
+								variant="outline"
+								class="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg transition-colors"
+							>
+								Como participar
+							</Button>
+						</div>
+					</div>
+
+					<!-- Images Grid -->
+					<div class="hidden lg:block">
+						<div class="grid grid-cols-2 gap-6">
+							<div class="space-y-6">
+								<div class="rounded-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+									<Image 
+										src={event1Image} 
+										alt="Meetup PupunhaCode - evento presencial" 
+										class="w-full h-auto"
+										width={300}
+										height={400}
+									/>
+								</div>
+							</div>
+							<div class="pt-12 space-y-6">
+								<div class="rounded-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+									<Image 
+										src={event2Image} 
+										alt="Apresentação técnica durante evento" 
+										class="w-full h-auto"
+										width={300}
+										height={400}
+									/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Projects Section -->
+		<section class="py-32 px-4 bg-neutral-900">
+			<div class="max-w-7xl mx-auto">
+				<!-- Header -->
+				<div class="max-w-2xl mb-16">
+					<h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+						Projetos da Comunidade
+					</h2>
+					<p class="text-lg text-neutral-400">
+						Conheça o que os membros estão criando e contribua para o ecossistema tech do Amapá
+					</p>
+				</div>
+
+				<!-- Projects Grid -->
+				<div class="grid md:grid-cols-2 gap-8 mb-12">
+					<!-- Project 1 -->
+					<div class="group p-8 rounded-xl bg-neutral-950 border border-neutral-800 hover:border-neutral-700 transition-all duration-300">
+						<div class="flex items-start gap-4 mb-6">
+							<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+								<Icon name="diagram" class="w-6 h-6 text-primary" />
 							</div>
 							<div>
-								<h3 class="text-xl font-bold text-white font-azeret">Landing Page</h3>
-								<p class="text-neutral-400 text-sm">Website da comunidade</p>
+								<h3 class="text-xl font-bold text-white mb-1">Landing Page</h3>
+								<p class="text-sm text-neutral-500">Website da comunidade</p>
 							</div>
 						</div>
-						<p class="text-neutral-300 mb-4 leading-relaxed">
-							Site oficial da PupunhaCode desenvolvido colaborativamente pela comunidade usando Astro, TailwindCSS e hospedado na Cloudflare Pages.
+						
+						<p class="text-neutral-400 mb-6 leading-relaxed">
+							Site oficial desenvolvido colaborativamente usando Astro, TailwindCSS e hospedado na Cloudflare Pages.
 						</p>
-						<div class="flex flex-wrap gap-2 mb-4">
-							<span class="px-2 py-1 bg-primary/20 text-primary text-xs rounded">Astro</span>
-							<span class="px-2 py-1 bg-primary/20 text-primary text-xs rounded">TailwindCSS</span>
-							<span class="px-2 py-1 bg-primary/20 text-primary text-xs rounded">TypeScript</span>
+						
+						<div class="flex flex-wrap gap-2 mb-6">
+							<span class="px-3 py-1 bg-neutral-800 text-neutral-300 text-xs rounded-full">Astro</span>
+							<span class="px-3 py-1 bg-neutral-800 text-neutral-300 text-xs rounded-full">TailwindCSS</span>
+							<span class="px-3 py-1 bg-neutral-800 text-neutral-300 text-xs rounded-full">TypeScript</span>
 						</div>
-						<Button as="a" href={GITHUB_URL} variant="ghost" size="sm" class="text-primary hover:bg-primary/10">
+						
+						<Button
+							as="a"
+							href={GITHUB_URL}
+							variant="outline"
+							class="border-neutral-700 text-neutral-300 hover:bg-neutral-800 hover:border-neutral-600 transition-colors"
+						>
 							Ver no GitHub
 						</Button>
 					</div>
 
-					<!-- Dev.to Organization -->
-					<div class="bg-neutral-900 border border-neutral-700 rounded-lg p-6 hover:border-secondary/50 transition-colors duration-300">
-						<div class="flex items-center space-x-3 mb-4">
-							<div class="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center">
-								<Icon name="book" class="w-5 h-5 text-secondary" />
+					<!-- Project 2 -->
+					<div class="group p-8 rounded-xl bg-neutral-950 border border-neutral-800 hover:border-neutral-700 transition-all duration-300">
+						<div class="flex items-start gap-4 mb-6">
+							<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+								<Icon name="book" class="w-6 h-6 text-secondary" />
 							</div>
 							<div>
-								<h3 class="text-xl font-bold text-white font-azeret">Dev.to Organization</h3>
-								<p class="text-neutral-400 text-sm">Artigos e conteúdo técnico</p>
+								<h3 class="text-xl font-bold text-white mb-1">Dev.to Organization</h3>
+								<p class="text-sm text-neutral-500">Artigos técnicos</p>
 							</div>
 						</div>
-						<p class="text-neutral-300 mb-4 leading-relaxed">
-							Nossa organização no Dev.to onde membros da comunidade compartilham artigos, tutoriais e conhecimento técnico sobre desenvolvimento.
+						
+						<p class="text-neutral-400 mb-6 leading-relaxed">
+							Organização onde membros compartilham artigos, tutoriais e conhecimento técnico sobre desenvolvimento.
 						</p>
-						<div class="flex flex-wrap gap-2 mb-4">
-							<span class="px-2 py-1 bg-secondary/20 text-secondary text-xs rounded">Artigos</span>
-							<span class="px-2 py-1 bg-secondary/20 text-secondary text-xs rounded">Tutoriais</span>
-							<span class="px-2 py-1 bg-secondary/20 text-secondary text-xs rounded">Tech Content</span>
+						
+						<div class="flex flex-wrap gap-2 mb-6">
+							<span class="px-3 py-1 bg-neutral-800 text-neutral-300 text-xs rounded-full">Artigos</span>
+							<span class="px-3 py-1 bg-neutral-800 text-neutral-300 text-xs rounded-full">Tutoriais</span>
+							<span class="px-3 py-1 bg-neutral-800 text-neutral-300 text-xs rounded-full">Tech Content</span>
 						</div>
-						<Button as="a" href="https://dev.to/pupunhacode" variant="ghost" size="sm" class="text-secondary hover:bg-secondary/10">
+						
+						<Button
+							as="a"
+							href="https://dev.to/pupunhacode"
+							variant="outline"
+							class="border-neutral-700 text-neutral-300 hover:bg-neutral-800 hover:border-neutral-600 transition-colors"
+						>
 							Ler Artigos
 						</Button>
 					</div>
 				</div>
-
-				<div class="text-center mt-12">
-					<p class="text-neutral-400 mb-4">Quer contribuir com algum projeto da comunidade?</p>
-					<Button as="a" href={DISCORD_URL} variant="outline" class="border-primary text-primary hover:bg-primary hover:text-white">
-						Junte-se ao Discord
-					</Button>
-				</div>
 			</div>
 		</section>
 
-		<!-- //discord cta section -->
-		<section class="py-20 px-4 bg-neutral-900">
-			<div class="container mx-auto max-w-6xl">
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+		<!-- Discord CTA Section -->
+		<section class="py-32 px-4 bg-neutral-950">
+			<div class="max-w-7xl mx-auto">
+				<div class="grid lg:grid-cols-2 gap-16 items-center">
 					<!-- Content -->
-					<div class="text-center lg:text-left">
-						<div class="flex items-center justify-center lg:justify-start space-x-3 mb-6">
-							<div class="w-16 h-16 bg-[#5865F2]/10 rounded-xl flex items-center justify-center">
+					<div>
+						<div class="flex items-center gap-4 mb-6">
+							<div class="w-16 h-16 rounded-xl bg-[#5865F2]/10 flex items-center justify-center">
 								<svg class="w-8 h-8 text-[#5865F2]" viewBox="0 0 24 24" fill="currentColor">
 									<path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0019 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9554 2.4189-2.1568 2.4189Z"/>
 								</svg>
 							</div>
-							<h2 class="text-3xl sm:text-4xl font-bold text-white font-azeret">Discord</h2>
+							<h2 class="text-3xl sm:text-4xl font-bold text-white">
+								Discord
+							</h2>
 						</div>
-						<p class="text-xl sm:text-2xl text-neutral-300 mb-8 leading-relaxed">
-							Nosso Discord é o coração da comunidade! Tire dúvidas, compartilhe conhecimento, participe de code reviews e faça networking com devs locais.
+						
+						<p class="text-lg text-neutral-400 mb-8 leading-relaxed">
+							Nosso Discord é o coração da comunidade. Tire dúvidas, compartilhe conhecimento, participe de code reviews e faça networking com devs locais.
 						</p>
-						<div class="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center lg:justify-start">
-							<Button as="a" href={DISCORD_URL} variant="primary" size="lg" class="w-full sm:w-auto">
+						
+						<div class="flex flex-wrap gap-4">
+							<Button
+								as="a"
+								href={DISCORD_URL}
+								class="bg-[#5865F2] hover:bg-[#4752C4] text-white px-8 py-4 text-lg transition-colors"
+							>
 								Entrar no Discord
 							</Button>
-							<Button as="a" href="/como-participar" variant="ghost" size="lg" class="w-full sm:w-auto text-neutral-300">
+							<Button 
+								as="a" 
+								href="/como-participar" 
+								variant="outline"
+								class="border-neutral-700 text-neutral-300 hover:bg-neutral-800 hover:border-neutral-600 px-8 py-4 text-lg transition-colors"
+							>
 								Como participar
 							</Button>
 						</div>
@@ -271,11 +372,11 @@ import { Icon } from 'astro-icon/components';
 
 					<!-- Discord Mockup -->
 					<div class="flex justify-center lg:justify-end">
-						<div class="relative max-w-lg w-full">
+						<div class="relative max-w-lg w-full rounded-2xl overflow-hidden transform hover:scale-105 transition-transform duration-500">
 							<Image 
 								src={discordMockup} 
-								alt="Preview do servidor Discord da PupunhaCode mostrando conversas e canais da comunidade" 
-								class="w-full h-auto rounded-lg shadow-2xl"
+								alt="Preview do servidor Discord da PupunhaCode" 
+								class="w-full h-auto"
 								width={600}
 								height={400}
 							/>

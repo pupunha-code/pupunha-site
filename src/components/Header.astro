@@ -19,7 +19,7 @@ const navItems = [
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
       <div class="flex-shrink-0">
-        <a href="/" class="block">
+        <a href="/" class="block no-underline">
           <Logo as="div" class="text-xl" />
         </a>
       </div>
@@ -30,7 +30,7 @@ const navItems = [
           <a 
             href={item.href}
             class={cn(
-              'font-azeret text-sm font-medium transition-colors hover:text-secondary',
+              'no-underline font-azeret text-sm font-medium transition-colors hover:text-secondary',
               currentPath === item.href ? 'text-secondary' : 'text-white'
             )}
           >
@@ -67,7 +67,7 @@ const navItems = [
         <a 
           href={item.href}
           class={cn(
-            'block px-3 py-2 rounded-md font-azeret text-base font-medium transition-colors',
+            'no-underline block px-3 py-2 rounded-md font-azeret text-base font-medium transition-colors',
             currentPath === item.href 
               ? 'text-secondary bg-neutral-800' 
               : 'text-white hover:text-secondary hover:bg-neutral-800'

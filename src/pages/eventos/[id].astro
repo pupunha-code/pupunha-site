@@ -1,0 +1,138 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getEventById, eventos } from '../../../eventos-data';
+import { Icon } from 'astro-icon/components';
+import EventGallery from '../../components/EventGallery.tsx';
+
+export async function getStaticPaths() {
+  return eventos.map((event) => ({
+    params: { id: event.id },
+  }));
+}
+
+const { id } = Astro.params;
+const event = getEventById(id!);
+
+if (!event) {
+  return Astro.redirect('/eventos');
+}
+
+const response = await fetch(`http://localhost:4321/api/gallery/${id}`)
+const data = await response.json();
+
+function formatDate(dateString: string) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('pt-BR', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric',
+    weekday: 'long'
+  });
+}
+
+function getEventTypeIcon(type: string) {
+  switch (type) {
+    case 'meetup': return '🤝';
+    case 'workshop': return '🛠️';
+    case 'hackathon': return '🏆';
+    case 'tech-talk': return '💻';
+    default: return '📅';
+  }
+}
+
+function getEventTypeColor(type: string) {
+  switch (type) {
+    case 'meetup': return 'text-primary';
+    case 'workshop': return 'text-secondary';
+    case 'hackathon': return 'text-accent';
+    case 'tech-talk': return 'text-primary';
+    default: return 'text-neutral-400';
+  }
+}
+---
+
+<Layout
+  title={`${event.title} - PupunhaCode`}
+  description={event.description}
+  keywords={[...event.tags, 'pupunha code', 'amapá', 'eventos tech']}
+  type="article"
+>
+  <main class="bg-neutral-900 min-h-screen pt-16">
+    <div class="container mx-auto px-4 py-16">
+      <div class="max-w-6xl mx-auto">
+        <!-- Breadcrumb -->
+        <nav class="flex items-center space-x-2 text-sm text-neutral-400 mb-8">
+          <a href="/" class="hover:text-white transition-colors no-underline">Home</a>
+          <span>→</span>
+          <a href="/eventos" class="hover:text-white transition-colors no-underline">Eventos</a>
+          <span>→</span>
+          <span class="text-white">{event.title}</span>
+        </nav>
+
+        <!-- Event Header -->
+        <div class="mb-16">
+          <h1 class="text-3xl sm:text-4xl font-bold text-white font-azeret mb-4">{event.title}</h1>
+          <p class="text-xl text-neutral-300 leading-relaxed mb-6">{event.description}</p>
+          
+          <!-- Event Info -->
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="bg-neutral-800 rounded-lg p-4">
+              <div class="flex items-center space-x-2 mb-2">
+                <Icon name="event" class="w-5 h-5 text-secondary" />
+                <span class="text-sm font-medium text-neutral-400">Data</span>
+              </div>
+              <p class="text-white font-azeret">{formatDate(event.date)}</p>
+            </div>
+            
+            <div class="bg-neutral-800 rounded-lg p-4">
+              <div class="flex items-center space-x-2 mb-2">
+                <Icon name="diagram" class="w-5 h-5 text-secondary" />
+                <span class="text-sm font-medium text-neutral-400">Local</span>
+              </div>
+              <p class="text-white font-azeret">{event.location}</p>
+            </div>
+            
+            {event.organizer && (
+              <div class="bg-neutral-800 rounded-lg p-4">
+                <div class="flex items-center space-x-2 mb-2">
+                  <Icon name="handshake" class="w-5 h-5 text-secondary" />
+                  <span class="text-sm font-medium text-neutral-400">Organizador</span>
+                </div>
+                <p class="text-white font-azeret">{event.organizer}</p>
+              </div>
+            )}
+            
+            {event.participants && (
+              <div class="bg-neutral-800 rounded-lg p-4">
+                <div class="flex items-center space-x-2 mb-2">
+                  <Icon name="handshake" class="w-5 h-5 text-secondary" />
+                  <span class="text-sm font-medium text-neutral-400">Participantes</span>
+                </div>
+                <p class="text-white font-azeret">{event.participants} pessoas</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <!-- Photo Gallery -->
+        {event.gallery?.enabled && (
+          <section class="mb-16">
+            <h2 class="text-2xl font-bold text-white font-azeret mb-8 flex items-center">
+              <Icon name="book" class="w-6 h-6 text-secondary mr-3" />
+              Galeria de Fotos
+            </h2>
+            
+            <EventGallery 
+              client:load
+              eventId={event.id}
+              eventTitle={event.title}
+              images={data.images}
+            />
+          </section>
+        )}
+
+      </div>
+    </div>
+  </main>
+</Layout>
+

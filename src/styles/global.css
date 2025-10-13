@@ -1,5 +1,18 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&display=swap');
+
+a {
+  color: 'red';
+  text-decoration: none !important;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active,
+a:-webkit-any-link {
+  text-decoration: none !important;
+}
+
 
 @theme {
   --color-primary: #a9d788;
@@ -8,10 +21,186 @@
   --color-neutral: #000000;
   
   --font-family-azeret: "Azeret Mono", monospace;
+  --font-family-poppins: "Poppins", sans-serif;
 }
 
-a {
-  text-decoration: none;
-  color: var(--color-primary);
-  font-style: normal;
+@layer utilities {
+  /* Shimmer button animations */
+  @keyframes shimmer-slide {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes spin-around {
+    0% {
+      transform: translate(0) rotate(0deg);
+    }
+    15% {
+      transform: translate(25%, 0) rotate(90deg);
+    }
+    30% {
+      transform: translate(25%, 25%) rotate(180deg);
+    }
+    45% {
+      transform: translate(0, 25%) rotate(270deg);
+    }
+    60% {
+      transform: translate(-25%, 0) rotate(360deg);
+    }
+    75% {
+      transform: translate(-25%, -25%) rotate(450deg);
+    }
+    100% {
+      transform: translate(0, -25%) rotate(540deg);
+    }
+  }
+
+  .animate-shimmer-slide {
+    animation: shimmer-slide 3s ease-in-out infinite;
+  }
+
+  .animate-spin-around {
+    animation: spin-around 3s linear infinite;
+  }
+
+  /* Gradient text animation */
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-gradient {
+    animation: gradient 6s ease infinite;
+  }
+
+  /* Line shadow text animation */
+  @keyframes line-shadow {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-line-shadow {
+    animation: line-shadow 2s ease-in-out infinite;
+  }
+
+  /* Aurora text animation */
+  @keyframes aurora {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-aurora {
+    animation: aurora 10s ease infinite;
+  }
+
+  /* Shine border animation */
+  @keyframes shine {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: 200% 200%;
+    }
+  }
+
+  .animate-shine {
+    animation: shine 14s linear infinite;
+  }
+
+  /* Blink cursor animation */
+  @keyframes blink-cursor {
+    0%, 50% {
+      opacity: 1;
+    }
+    51%, 100% {
+      opacity: 0;
+    }
+  }
+
+  .animate-blink-cursor {
+    animation: blink-cursor 1s infinite;
+  }
+
+  /* Ripple animation */
+  @keyframes rippling {
+    0% {
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+
+  .animate-rippling {
+    animation: rippling 0.6s ease-out;
+  }
+
+  /* Grid animation */
+  @keyframes grid {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+
+  .animate-grid {
+    animation: grid 15s linear infinite;
+  }
+
+  /* Background position spin */
+  @keyframes background-position-spin {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: 100% 100%;
+    }
+  }
+
+  .animate-background-position-spin {
+    animation: background-position-spin 3s linear infinite;
+  }
+
+  /* Rainbow animation */
+  @keyframes rainbow {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-rainbow {
+    animation: rainbow 3s ease infinite;
+  }
 }

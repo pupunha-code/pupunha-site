@@ -1,16 +1,6 @@
 ---
 import { cn } from '../lib/utils';
 
-interface Props {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
-  size?: 'sm' | 'md' | 'lg';
-  as?: 'button' | 'a';
-  href?: string;
-  disabled?: boolean;
-  class?: string;
-  [key: string]: any;
-}
-
 const { 
   variant = 'primary', 
   size = 'md', 
@@ -23,7 +13,7 @@ const {
 
 const Component = as === 'a' && href ? 'a' : 'button';
 
-const baseStyles = 'inline-flex items-center justify-center font-azeret font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50';
+const baseStyles = 'no-underline text-decoration-none inline-flex items-center justify-center font-azeret font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50';
 
 const variants = {
   primary: 'bg-secondary text-white hover:bg-secondary/90 focus-visible:ring-secondary',
