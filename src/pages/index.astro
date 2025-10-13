@@ -1,8 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import TerminalWindow from '../components/TerminalWindow.astro';
-import TerminalLine from '../components/TerminalLine.astro';
 import { DISCORD_URL, GITHUB_URL } from '../constants/site';
+import Logo from '../components/Logo.astro';
+import Button from '../components/Button.astro';
+import heroBackground from '../assets/hero-background.svg';
+import event1Image from '../assets/event-1.png';
+import event2Image from '../assets/event-2.png';
+import discordMockup from '../assets/discord-mockup.png';
+import girlCoding from '../assets/girl-coding.png';
+import { Image } from 'astro:assets';
+import TypewriterText from '../components/TypewriterText.astro';
+import { Icon } from 'astro-icon/components';
+
+// Import only essential Magic UI components
+import { BorderBeam } from '../components/ui/border-beam';
 ---
 
 <Layout
@@ -11,180 +22,368 @@ import { DISCORD_URL, GITHUB_URL } from '../constants/site';
 	keywords={['desenvolvedores amapá', 'comunidade tech amazônia', 'developers amapá', 'programadores macapá', 'tecnologia norte brasil', 'pupunha code']}
 	type="website"
 >
-	<main class="terminal-container">
-		<TerminalWindow class="index-terminal">
-			<TerminalLine command="cat welcome.txt" />
+	<main class="bg-neutral-950">
+		<!-- Hero Section - Clean & Modern -->
+		<section class="relative min-h-screen flex items-center px-4 overflow-hidden bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950">
+			<!-- Subtle Background -->
+			<div class="absolute inset-0 ">
+				<Image 
+					src={heroBackground} 
+					alt="Background pattern" 
+					class="w-full h-full object-cover"
+					width={1920}
+					height={1080}
+				/>
+			</div>
 			
-			<section class="welcome-section">
-				<img src="/hero.png" alt="PupunhaCode" class="hero-image" />
-				
-				<div class="brand-info">
-					<h1 class="brand-title">
-						<span class="brand-pupunha">Pupunha</span><span class="brand-code">Code</span>
-					</h1>
-					<div class="brand-description">
-						<p>
-							O nosso objetivo é ajudar a comunidade de desenvolvedores do Amapá a crescer e se conectar, divulgando projetos, eventos e oportunidades e fofocar sobre tecnologia. :)
-							<br>
-							Se você é desenvolvedor e quer se conectar com a nossa comunidade, participe do desafio inicial e manda pra gente!
+			<!-- Content -->
+			<div class="relative z-10 max-w-7xl mx-auto w-full">
+				<div class="text-center no-underline">
+					<Logo as="h1" class="text-5xl sm:text-6xl lg:text-7xl mb-6" />
+					
+					<p class="text-xl sm:text-2xl text-neutral-400 mb-10 ">
+						Comunidade de desenvolvedores do Amapá
+					</p>
+					
+					<div class="flex flex-wrap gap-4 justify-center">
+						<Button 
+							as="a" 
+							href="/como-participar" 
+							class="no-underline border-neutral-700 text-neutral-300 hover:bg-neutral-800 hover:border-neutral-600 px-8 py-4 text-lg transition-colors"
+						>
+							Participar agora
+						</Button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Mission Section - Asymmetric Layout -->
+		<section class="py-32 px-4 bg-neutral-900">
+			<div class="max-w-7xl mx-auto">
+				<div class="grid lg:grid-cols-2 gap-16 items-center">
+					<!-- Text Content -->
+					<div class="max-w-xl">
+						<h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">
+							Nossa Missão
+						</h2>
+						
+						<p class="text-lg text-neutral-400 leading-relaxed mb-8">
+							Fortalecer o ecossistema tech do Amapá, conectando desenvolvedores, compartilhando conhecimento e criando oportunidades através de projetos colaborativos, eventos e mentorias.
+						</p>
+						
+						<ul class="space-y-4">
+							<li class="flex items-center gap-3 text-neutral-300">
+								<div class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></div>
+								<span>Conectar talentos locais</span>
+							</li>
+							<li class="flex items-center gap-3 text-neutral-300">
+								<div class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></div>
+								<span>Compartilhar conhecimento</span>
+							</li>
+							<li class="flex items-center gap-3 text-neutral-300">
+								<div class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></div>
+								<span>Criar oportunidades</span>
+							</li>
+						</ul>
+					</div>
+					
+					<!-- Image -->
+					<div class="relative">
+						<div class="relative rounded-2xl overflow-hidden">
+							<Image 
+								src={girlCoding}
+								alt="Desenvolvedora programando"
+								class="w-full h-auto"
+								width={600}
+								height={400}
+							/>
+							<BorderBeam 
+								size={120}
+								duration={12}
+								colorFrom="#a9d788"
+								colorTo="#E26228"
+								className="rounded-2xl"
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Benefits Section - Minimal Cards -->
+		<section class="py-32 px-4 bg-neutral-950">
+			<div class="max-w-7xl mx-auto">
+				<!-- Header -->
+				<div class="max-w-2xl mb-16">
+					<h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+						Junte-se à comunidade e <TypewriterText 
+							words={['contribua', 'colabore', 'cresça', 'aprenda', 'ensine']}
+							class="text-primary inline-block"
+						/>
+					</h2>
+					<p class="text-lg text-neutral-400">
+						Faça parte de uma comunidade ativa de desenvolvedores no Amapá
+					</p>
+				</div>
+
+				<!-- Benefits Grid -->
+				<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+					<!-- Benefit 1 -->
+					<div class="group p-8 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-all duration-300">
+						<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+							<Icon name="book" class="w-6 h-6 text-secondary" />
+						</div>
+						<h3 class="text-lg font-semibold text-white mb-2">
+							Compartilhe Conhecimento
+						</h3>
+						<p class="text-sm text-neutral-400 leading-relaxed">
+							Crie tutoriais, faça talks e ajude outros devs a crescerem
+						</p>
+					</div>
+
+					<!-- Benefit 2 -->
+					<div class="group p-8 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-all duration-300">
+						<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+							<Icon name="event" class="w-6 h-6 text-primary" />
+						</div>
+						<h3 class="text-lg font-semibold text-white mb-2">
+							Participe de Eventos
+						</h3>
+						<p class="text-sm text-neutral-400 leading-relaxed">
+							Meetups, workshops e hackathons presenciais e online
+						</p>
+					</div>
+
+					<!-- Benefit 3 -->
+					<div class="group p-8 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-all duration-300">
+						<div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+							<Icon name="handshake" class="w-6 h-6 text-accent" />
+						</div>
+						<h3 class="text-lg font-semibold text-white mb-2">
+							Mentoria
+						</h3>
+						<p class="text-sm text-neutral-400 leading-relaxed">
+							Guie iniciantes ou aprenda com desenvolvedores experientes
+						</p>
+					</div>
+
+					<!-- Benefit 4 -->
+					<div class="group p-8 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-all duration-300">
+						<div class="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+							<Icon name="diagram" class="w-6 h-6 text-white" />
+						</div>
+						<h3 class="text-lg font-semibold text-white mb-2">
+							Desenvolva Projetos
+						</h3>
+						<p class="text-sm text-neutral-400 leading-relaxed">
+							Colabore em projetos open source e contribua para o ecossistema
 						</p>
 					</div>
 				</div>
-			</section>
-			
-			<TerminalLine command="ls links/" />
-			
-			<section class="links-section">
-				<div class="file-list">
-					<a href="/como-participar" class="file-link">
-						<span class="file-icon">🎯</span> como-participar.md
-					</a>
-					<a href="/devs" class="file-link">
-						<span class="file-icon">🖥️</span> devs-amapa.txt
-					</a>
-					<a href={DISCORD_URL} class="file-link">
-						<span class="file-icon">💬</span> discord.gg/pupunha
-					</a>
-					<a href={GITHUB_URL} class="file-link">
-						<span class="file-icon">📂</span> github.com/pupunha-code
-					</a>
+			</div>
+		</section>
+
+		<!-- Events Section - Bold Background -->
+		<section class="relative py-32 px-4 bg-gradient-to-br from-secondary to-accent overflow-hidden">
+			<div class="max-w-7xl mx-auto">
+				<div class="grid lg:grid-cols-2 gap-16 items-center">
+					<!-- Content -->
+					<div class="text-white">
+						<h2 class="text-3xl sm:text-4xl font-bold mb-6">
+							Eventos e Meetups
+						</h2>
+						
+						<p class="text-lg text-white/90 mb-8 leading-relaxed">
+							Participamos e organizamos eventos voltados para a área tech. Encontros para aprender, fazer networking e fortalecer a comunidade local.
+						</p>
+						
+						<div class="flex flex-wrap gap-4">
+							<Button 
+								as="a" 
+								href="/eventos" 
+								class="bg-white text-secondary hover:bg-neutral-100 px-8 py-4 text-lg font-semibold transition-colors"
+							>
+								Ver todos os eventos
+							</Button>
+							<Button 
+								as="a" 
+								href="/como-participar" 
+								variant="outline"
+								class="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg transition-colors"
+							>
+								Como participar
+							</Button>
+						</div>
+					</div>
+
+					<!-- Images Grid -->
+					<div class="hidden lg:block">
+						<div class="grid grid-cols-2 gap-6">
+							<div class="space-y-6">
+								<div class="rounded-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+									<Image 
+										src={event1Image} 
+										alt="Meetup PupunhaCode - evento presencial" 
+										class="w-full h-auto"
+										width={300}
+										height={400}
+									/>
+								</div>
+							</div>
+							<div class="pt-12 space-y-6">
+								<div class="rounded-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+									<Image 
+										src={event2Image} 
+										alt="Apresentação técnica durante evento" 
+										class="w-full h-auto"
+										width={300}
+										height={400}
+									/>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-			</section>
-			
-			<TerminalLine command="" blinkingCursor={true} />
-		</TerminalWindow>
+			</div>
+		</section>
+
+		<!-- Projects Section -->
+		<section class="py-32 px-4 bg-neutral-900">
+			<div class="max-w-7xl mx-auto">
+				<!-- Header -->
+				<div class="max-w-2xl mb-16">
+					<h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+						Projetos da Comunidade
+					</h2>
+					<p class="text-lg text-neutral-400">
+						Conheça o que os membros estão criando e contribua para o ecossistema tech do Amapá
+					</p>
+				</div>
+
+				<!-- Projects Grid -->
+				<div class="grid md:grid-cols-2 gap-8 mb-12">
+					<!-- Project 1 -->
+					<div class="group p-8 rounded-xl bg-neutral-950 border border-neutral-800 hover:border-neutral-700 transition-all duration-300">
+						<div class="flex items-start gap-4 mb-6">
+							<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+								<Icon name="diagram" class="w-6 h-6 text-primary" />
+							</div>
+							<div>
+								<h3 class="text-xl font-bold text-white mb-1">Landing Page</h3>
+								<p class="text-sm text-neutral-500">Website da comunidade</p>
+							</div>
+						</div>
+						
+						<p class="text-neutral-400 mb-6 leading-relaxed">
+							Site oficial desenvolvido colaborativamente usando Astro, TailwindCSS e hospedado na Cloudflare Pages.
+						</p>
+						
+						<div class="flex flex-wrap gap-2 mb-6">
+							<span class="px-3 py-1 bg-neutral-800 text-neutral-300 text-xs rounded-full">Astro</span>
+							<span class="px-3 py-1 bg-neutral-800 text-neutral-300 text-xs rounded-full">TailwindCSS</span>
+							<span class="px-3 py-1 bg-neutral-800 text-neutral-300 text-xs rounded-full">TypeScript</span>
+						</div>
+						
+						<Button
+							as="a"
+							href={GITHUB_URL}
+							variant="outline"
+							class="border-neutral-700 text-neutral-300 hover:bg-neutral-800 hover:border-neutral-600 transition-colors"
+						>
+							Ver no GitHub
+						</Button>
+					</div>
+
+					<!-- Project 2 -->
+					<div class="group p-8 rounded-xl bg-neutral-950 border border-neutral-800 hover:border-neutral-700 transition-all duration-300">
+						<div class="flex items-start gap-4 mb-6">
+							<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+								<Icon name="book" class="w-6 h-6 text-secondary" />
+							</div>
+							<div>
+								<h3 class="text-xl font-bold text-white mb-1">Dev.to Organization</h3>
+								<p class="text-sm text-neutral-500">Artigos técnicos</p>
+							</div>
+						</div>
+						
+						<p class="text-neutral-400 mb-6 leading-relaxed">
+							Organização onde membros compartilham artigos, tutoriais e conhecimento técnico sobre desenvolvimento.
+						</p>
+						
+						<div class="flex flex-wrap gap-2 mb-6">
+							<span class="px-3 py-1 bg-neutral-800 text-neutral-300 text-xs rounded-full">Artigos</span>
+							<span class="px-3 py-1 bg-neutral-800 text-neutral-300 text-xs rounded-full">Tutoriais</span>
+							<span class="px-3 py-1 bg-neutral-800 text-neutral-300 text-xs rounded-full">Tech Content</span>
+						</div>
+						
+						<Button
+							as="a"
+							href="https://dev.to/pupunhacode"
+							variant="outline"
+							class="border-neutral-700 text-neutral-300 hover:bg-neutral-800 hover:border-neutral-600 transition-colors"
+						>
+							Ler Artigos
+						</Button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Discord CTA Section -->
+		<section class="py-32 px-4 bg-neutral-950">
+			<div class="max-w-7xl mx-auto">
+				<div class="grid lg:grid-cols-2 gap-16 items-center">
+					<!-- Content -->
+					<div>
+						<div class="flex items-center gap-4 mb-6">
+							<div class="w-16 h-16 rounded-xl bg-[#5865F2]/10 flex items-center justify-center">
+								<svg class="w-8 h-8 text-[#5865F2]" viewBox="0 0 24 24" fill="currentColor">
+									<path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0019 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9554 2.4189-2.1568 2.4189Z"/>
+								</svg>
+							</div>
+							<h2 class="text-3xl sm:text-4xl font-bold text-white">
+								Discord
+							</h2>
+						</div>
+						
+						<p class="text-lg text-neutral-400 mb-8 leading-relaxed">
+							Nosso Discord é o coração da comunidade. Tire dúvidas, compartilhe conhecimento, participe de code reviews e faça networking com devs locais.
+						</p>
+						
+						<div class="flex flex-wrap gap-4">
+							<Button
+								as="a"
+								href={DISCORD_URL}
+								class="bg-[#5865F2] hover:bg-[#4752C4] text-white px-8 py-4 text-lg transition-colors"
+							>
+								Entrar no Discord
+							</Button>
+							<Button 
+								as="a" 
+								href="/como-participar" 
+								variant="outline"
+								class="border-neutral-700 text-neutral-300 hover:bg-neutral-800 hover:border-neutral-600 px-8 py-4 text-lg transition-colors"
+							>
+								Como participar
+							</Button>
+						</div>
+					</div>
+
+					<!-- Discord Mockup -->
+					<div class="flex justify-center lg:justify-end">
+						<div class="relative max-w-lg w-full rounded-2xl overflow-hidden transform hover:scale-105 transition-transform duration-500">
+							<Image 
+								src={discordMockup} 
+								alt="Preview do servidor Discord da PupunhaCode" 
+								class="w-full h-auto"
+								width={600}
+								height={400}
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 	</main>
 </Layout>
-
-<style>
-
-	.terminal-container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-		padding-top: 2rem;
-
-	}
-	/* Terminal Window Override for Index */
-	.index-terminal {
-		max-width: 800px;
-	}
-
-	/* Welcome Section */
-	.welcome-section {
-		margin: var(--space-lg) 0;
-		text-align: center;
-		padding: var(--space-md);
-		background: rgba(0, 255, 65, 0.05);
-		border: 1px solid rgba(0, 255, 65, 0.2);
-		border-radius: var(--radius-md);
-	}
-
-	.hero-image {
-		max-width: 100%;
-		height: auto;
-		max-height: 200px;
-		margin-bottom: var(--space-md);
-		border-radius: var(--radius-sm);
-		filter: brightness(0.9);
-	}
-
-	.brand-title {
-		font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-		font-size: clamp(2.5rem, 7vw, 4rem);
-		font-weight: 900;
-		margin: 0 0 var(--space-xs) 0;
-		line-height: 0.9;
-		letter-spacing: -0.02em;
-		text-transform: uppercase;
-		text-shadow: 
-			0 0 30px rgba(76, 175, 80, 0.4),
-			0 2px 4px rgba(0, 0, 0, 0.3);
-		filter: drop-shadow(0 0 10px rgba(76, 175, 80, 0.2));
-	}
-
-	.brand-pupunha {
-		color: var(--color-primary);
-	}
-
-	.brand-code {
-		color: var(--color-secondary);
-	}
-
-	.brand-description p {
-		font-size: clamp(0.85rem, 2vw, 1rem);
-		color: var(--color-text-secondary);
-		margin: var(--space-sm) 0 0 0;
-		font-weight: 400;
-		line-height: 1.5;
-		max-width: 600px;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	/* Links Section */
-	.links-section {
-		margin: var(--space-md) 0;
-		padding-left: var(--space-sm);
-	}
-
-	.file-list {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-xs);
-	}
-
-	.file-link {
-		color: var(--color-accent);
-		text-decoration: none;
-		font-size: 0.9rem;
-		display: flex;
-		align-items: center;
-		gap: var(--space-xs);
-		padding: var(--space-xs);
-		border-radius: var(--radius-sm);
-		transition: var(--transition-fast);
-	}
-
-	.file-link:hover {
-		background: rgba(79, 195, 247, 0.1);
-		color: #81D4FA;
-		transform: translateX(8px);
-	}
-
-	.file-icon {
-		font-size: var(--font-md);
-	}
-
-	/* Animations */
-	@keyframes rainbow-border {
-		0%, 100% { opacity: 0.2; }
-		50% { opacity: 0.4; }
-	}
-
-	/* Responsive Design */
-	@media (max-width: 768px) {
-		.welcome-section {
-			padding: var(--space-sm);
-		}
-
-		.hero-image {
-			max-height: 150px;
-		}
-
-		.file-link {
-			font-size: var(--font-sm);
-		}
-	}
-
-	@media (max-width: 480px) {
-		.welcome-section {
-			margin: var(--space-sm) 0;
-		}
-
-		.hero-image {
-			max-height: 120px;
-		}
-	}
-</style>

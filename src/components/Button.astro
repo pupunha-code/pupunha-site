@@ -1,0 +1,56 @@
+---
+import { cn } from '../lib/utils';
+
+const { 
+  variant = 'primary', 
+  size = 'md', 
+  as = 'button',
+  href,
+  disabled = false,
+  class: className = '',
+  ...rest 
+} = Astro.props;
+
+const Component = as === 'a' && href ? 'a' : 'button';
+
+const baseStyles = 'no-underline text-decoration-none inline-flex items-center justify-center font-azeret font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50';
+
+const variants = {
+  primary: 'bg-secondary text-white hover:bg-secondary/90 focus-visible:ring-secondary',
+  secondary: 'bg-primary text-neutral hover:bg-primary/90 focus-visible:ring-primary',
+  outline: 'border border-secondary text-secondary hover:bg-secondary hover:text-white focus-visible:ring-secondary',
+  ghost: 'text-secondary hover:bg-secondary/10 focus-visible:ring-secondary'
+};
+
+const sizes = {
+  sm: 'h-8 px-3 text-sm rounded-md',
+  md: 'h-10 px-4 py-2 rounded-md',
+  lg: 'h-12 px-6 py-3 text-lg rounded-lg'
+};
+
+const buttonClass = cn(
+  baseStyles,
+  variants[variant],
+  sizes[size],
+  disabled && 'opacity-50 cursor-not-allowed',
+  className
+);
+---
+
+{Component === 'a' ? (
+  <a 
+    href={href} 
+    class={buttonClass}
+    {...rest}
+  >
+    <slot />
+  </a>
+) : (
+  <button 
+    class={buttonClass}
+    disabled={disabled}
+    {...rest}
+  >
+    <slot />
+  </button>
+)}

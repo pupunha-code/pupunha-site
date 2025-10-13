@@ -1,0 +1,14 @@
+---
+import { cn } from '../lib/utils';
+
+interface Props {
+  as?: string;
+  class?: string;
+}
+
+const { as: Component = 'h1', class: className = '' } = Astro.props;
+---
+
+<Component class={cn('font-azeret', className)}>
+  <span class="font-bold text-secondary">Pupunha<span class="font-light italic text-white">Code</span></span>
+</Component>

@@ -1,0 +1,160 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import { DISCORD_URL } from '../constants/site';
+import { eventos, getEventsByStatus } from '../../eventos-data';
+import rightArrowIcon from '../assets/ant-design_right-outlined.svg';
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+
+const upcomingEvents = getEventsByStatus('upcoming');
+const pastEvents = getEventsByStatus('past');
+
+function formatDate(dateString: string) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('pt-BR', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+}
+
+function getEventTypeIcon(type: string) {
+  switch (type) {
+    case 'meetup': return '🤝';
+    case 'workshop': return '🛠️';
+    case 'hackathon': return '🏆';
+    case 'tech-talk': return '💻';
+    default: return '📅';
+  }
+}
+
+function getEventTypeColor(type: string) {
+  switch (type) {
+    case 'meetup': return 'text-primary';
+    case 'workshop': return 'text-secondary';
+    case 'hackathon': return 'text-accent';
+    case 'tech-talk': return 'text-primary';
+    default: return 'text-neutral-400';
+  }
+}
+---
+
+<Layout
+  title="Eventos e Meetups - PupunhaCode"
+  description="Participe dos eventos e meetups da PupunhaCode. Conecte-se com outros desenvolvedores do Amapá e participe de discussões sobre tecnologia."
+  keywords={['eventos tech amapá', 'meetups desenvolveres', 'pupunha code eventos', 'tecnologia amapá']}
+>
+  <main class="bg-neutral-900 min-h-screen pt-16">
+    <div class="container mx-auto px-4 py-16">
+      <div class="max-w-6xl mx-auto">
+        <!-- Header Section -->
+        <div class="text-center mb-16">
+          <h1 class="text-3xl sm:text-4xl font-bold mb-6 text-white font-azeret">
+            <span class="text-secondary">
+              <Image src={rightArrowIcon} alt="Seta apontando para a direita" width={32} height={32} class="inline-block mr-2" />
+            </span>
+            Eventos e Meetups
+          </h1>
+          <p class="text-neutral-300 text-lg max-w-2xl mx-auto">
+            Conecte-se com outros desenvolvedores, compartilhe conhecimento e participe da nossa comunidade através de eventos presenciais e virtuais.
+          </p>
+        </div>
+
+        <!-- Upcoming Events -->
+        {upcomingEvents.length > 0 && (
+          <section class="mb-16">
+            <h2 class="text-2xl font-bold text-white font-azeret mb-8 flex items-center">
+              <Icon name="event" class="w-6 h-6 text-secondary mr-3" />
+              Próximos Eventos
+            </h2>
+            <div class="grid gap-6">
+              {upcomingEvents.map((event) => (
+                <div class="bg-neutral-800 border border-neutral-700 rounded-lg p-6 hover:border-secondary/50 transition-colors duration-300">
+                  <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                    <div class="flex-1">
+                      <div class="flex items-center space-x-3 mb-3">
+                        <span class="text-2xl">{getEventTypeIcon(event.type)}</span>
+                        <span class={`px-3 py-1 rounded-full text-xs font-medium ${getEventTypeColor(event.type)} bg-current/10`}>
+                          {event.type.replace('-', ' ')}
+                        </span>
+                        <span class="text-neutral-400 text-sm">{formatDate(event.date)}</span>
+                      </div>
+                      <h3 class="text-xl font-bold text-white font-azeret mb-2">{event.title}</h3>
+                      <p class="text-neutral-300 mb-3 leading-relaxed">{event.description}</p>
+                      <div class="flex items-center space-x-4 text-sm text-neutral-400">
+                        <span class="flex items-center space-x-1">
+                          <Icon name="event" class="w-4 h-4" />
+                          <span>{event.location}</span>
+                        </span>
+                        {event.organizer && (
+                          <span class="flex items-center space-x-1">
+                            <Icon name="handshake" class="w-4 h-4" />
+                            <span>{event.organizer}</span>
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                      <Button as="a" href={`/eventos/${event.id}`} variant="secondary" size="sm" class="no-underline">
+                        Ver Detalhes
+                      </Button>
+                      <Button as="a" href={DISCORD_URL} variant="outline" size="sm" class="border-primary text-primary hover:bg-primary hover:text-white no-underline">
+                        Participar
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <!-- Past Events -->
+        {pastEvents.length > 0 && (
+          <section class="mb-16">
+            <h2 class="text-2xl font-bold text-white font-azeret mb-8 flex items-center">
+              <Icon name="book" class="w-6 h-6 text-primary mr-3" />
+              Eventos Passados
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+              {pastEvents.map((event) => (
+                <div class="bg-neutral-800 border border-neutral-700 rounded-lg overflow-hidden hover:border-primary/50 transition-colors duration-300">
+                  <div class="aspect-video bg-neutral-700 flex items-center justify-center">
+                    <img 
+                      src={event.thumbnail} 
+                      alt={event.title}
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="p-6">
+                    <div class="flex items-center space-x-3 mb-3">
+                      <span class="text-xl">{getEventTypeIcon(event.type)}</span>
+                      <span class={`px-2 py-1 rounded text-xs font-medium ${getEventTypeColor(event.type)} bg-current/10`}>
+                        {event.type.replace('-', ' ')}
+                      </span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white font-azeret mb-2">{event.title}</h3>
+                    <p class="text-neutral-300 text-sm mb-4 line-clamp-2">{event.description}</p>
+                    <div class="flex items-center justify-between">
+                      <div class="text-xs text-neutral-400">
+                        <p>{formatDate(event.date)}</p>
+                        {event.participants && (
+                          <p>{event.participants} participantes</p>
+                        )}
+                      </div>
+                      <Button as="a" href={`/eventos/${event.id}`} variant="ghost" size="sm" class="text-primary hover:bg-primary/10 no-underline">
+                        Ver Fotos
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}        
+      </div>
+    </div>
+  </main>
+</Layout>

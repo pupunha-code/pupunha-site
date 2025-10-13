@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+import rightArrowIcon from '../assets/ant-design_right-outlined.svg';
+import quemSomos1 from '../assets/quem-somos-1.png';
+import quemSomos2 from '../assets/quem-somos-2.png';
+import { Image } from 'astro:assets';
+---
+
+<Layout
+  title="Quem Somos - PupunhaCode"
+  description="Conheça a PupunhaCode, a comunidade de desenvolvedores do Amapá criada por Lorena e Luma Montes para conectar e fortalecer o ecossistema tech da região."
+  keywords={['pupunha code', 'quem somos', 'comunidade tech amapá', 'desenvolvedores amazônia', 'lorena montes', 'luma montes']}
+>
+  <main class="bg-neutral-900 min-h-screen pt-16">
+    <div class="container mx-auto px-4 py-16">
+      <div class="max-w-6xl mx-auto">
+        <!-- Header Section -->
+        <div class="text-center mb-16">
+          <h1 class="text-3xl sm:text-4xl font-bold mb-6 text-white font-azeret">
+            <span class="text-secondary">
+              <Image src={rightArrowIcon} alt="Seta apontando para a direita" width={32} height={32} class="inline-block mr-2" />
+            </span>
+            Quem Somos
+          </h1>
+          <p class="text-xl text-neutral-300 max-w-2xl mx-auto">
+            Uma comunidade criada para conectar desenvolvedores do Amapá e fortalecer o ecossistema tech da nossa região.
+          </p>
+        </div>
+
+        <!-- Story Section -->
+        <section class="mb-16">
+          <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+              <h2 class="text-2xl font-bold text-white font-azeret mb-6">Nossa História</h2>
+              <p class="text-neutral-300 leading-relaxed">
+                Idealizado por <strong class="text-secondary">Lorena Montes</strong> e <strong class="text-secondary">Luma Montes</strong>, o PupunhaCode surgiu de uma vontade simples: a falta de uma comunidade ativa e engajada para desenvolvedores na nossa região.
+              </p>
+              <p class="text-neutral-300 leading-relaxed">
+                Queríamos um espaço onde pudéssemos trocar experiências, aprender juntos e crescer através de eventos, meetups e muito networking.
+              </p>
+              <p class="text-neutral-300 leading-relaxed">
+                A resposta da comunidade local foi imediata e calorosa. Desenvolvedores talentosos abraçaram a ideia e se juntaram a nós para fazer o projeto acontecer. (Aliás, você pode conhecer alguns desses devs incríveis <a href="/devs" class="text-secondary hover:text-primary transition-colors no-underline font-medium">aqui na nossa comunidade</a>!)
+              </p>
+            </div>
+            <div class="order-first lg:order-last">
+              <Image 
+                src={quemSomos1} 
+                alt="Lorena e Luma Montes trabalhando juntas no PupunhaCode"
+                class="rounded-lg shadow-lg w-full"
+                loading="eager"
+              />
+            </div>
+          </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="mb-16">
+          <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <Image 
+                src={quemSomos2} 
+                alt="Equipe da comunidade PupunhaCode em evento"
+                class="rounded-lg shadow-lg w-full"
+                loading="lazy"
+              />
+            </div>
+            <div class="space-y-6">
+              <h2 class="text-2xl font-bold text-white font-azeret mb-6">Nossos Valores</h2>
+              <p class="text-neutral-300 leading-relaxed">
+                Hoje, somos uma equipe <strong class="text-secondary">receptiva, colaborativa</strong> e sempre aberta a novas ideias e pessoas.
+              </p>
+              <p class="text-neutral-300 leading-relaxed">
+                Acreditamos que a tecnologia cresce melhor quando compartilhada, e é isso que nos move: construir uma comunidade onde todos se sintam bem-vindos para aprender, contribuir e evoluir juntos.
+              </p>
+              <div class="grid sm:grid-cols-2 gap-4 mt-8">
+                <div class="bg-neutral-800 rounded-lg p-4 border border-neutral-700">
+                  <h3 class="font-azeret font-bold text-secondary mb-2">Colaboração</h3>
+                  <p class="text-neutral-300 text-sm">Crescemos juntos compartilhando conhecimento</p>
+                </div>
+                <div class="bg-neutral-800 rounded-lg p-4 border border-neutral-700">
+                  <h3 class="font-azeret font-bold text-secondary mb-2">Inclusão</h3>
+                  <p class="text-neutral-300 text-sm">Todos são bem-vindos em nossa comunidade</p>
+                </div>
+                <div class="bg-neutral-800 rounded-lg p-4 border border-neutral-700">
+                  <h3 class="font-azeret font-bold text-secondary mb-2">Inovação</h3>
+                  <p class="text-neutral-300 text-sm">Sempre abertos a novas ideias e tecnologias</p>
+                </div>
+                <div class="bg-neutral-800 rounded-lg p-4 border border-neutral-700">
+                  <h3 class="font-azeret font-bold text-secondary mb-2">Região</h3>
+                  <p class="text-neutral-300 text-sm">Orgulho e foco no desenvolvimento local</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Mission & Vision -->
+        <section class="mb-16">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-neutral-800 border border-neutral-700 rounded-lg p-8">
+              <h2 class="text-2xl font-bold text-primary font-azeret mb-6">Nossa Missão</h2>
+              <p class="text-neutral-300 leading-relaxed">
+                Conectar desenvolvedores do Amapá através de eventos, networking e compartilhamento de conhecimento, fortalecendo o ecossistema tech local.
+              </p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+</Layout>

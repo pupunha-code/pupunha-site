@@ -1,0 +1,54 @@
+---
+interface Props {
+  words: string[];
+  baseText?: string;
+  class?: string;
+  speed?: number;
+}
+
+const { words, baseText = '', class: className = '', speed = 100 } = Astro.props;
+const id = `typewriter-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<span class={className}>
+  {baseText}
+  <span id={id} class="text-secondary font-bold"></span>
+  <span class="animate-pulse">|</span>
+</span>
+
+<script define:vars={{ words, id, speed }}>
+  const element = document.getElementById(id);
+  if (element) {
+    let currentWordIndex = 0;
+    let currentCharIndex = 0;
+    let isDeleting = false;
+    let typeSpeed = speed;
+
+    function type() {
+      const currentWord = words[currentWordIndex];
+      
+      if (isDeleting) {
+        element.textContent = currentWord.substring(0, currentCharIndex - 1);
+        currentCharIndex--;
+        typeSpeed = speed / 2;
+      } else {
+        element.textContent = currentWord.substring(0, currentCharIndex + 1);
+        currentCharIndex++;
+        typeSpeed = speed;
+      }
+
+      if (!isDeleting && currentCharIndex === currentWord.length) {
+        typeSpeed = 2000; // Pause at end of word
+        isDeleting = true;
+      } else if (isDeleting && currentCharIndex === 0) {
+        isDeleting = false;
+        currentWordIndex = (currentWordIndex + 1) % words.length;
+      }
+
+      setTimeout(type, typeSpeed);
+    }
+
+    // Start the typewriter effect
+    setTimeout(type, 1000);
+  }
+</script>

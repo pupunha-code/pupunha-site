@@ -10,7 +10,22 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.0",
+    "@astrojs/react": "^4.4.0",
+    "@aws-sdk/client-s3": "^3.908.0",
+    "@tailwindcss/vite": "^4.1.14",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.1",
     "astro": "^5.11.0",
-    "wrangler": "^4.23.0"
+    "astro-icon": "^1.1.5",
+    "clsx": "^2.1.1",
+    "motion": "^12.23.24",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "sharp": "^0.34.4",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^4.1.14"
+  },
+  "devDependencies": {
+    "wrangler": "^4.42.2"
   }
 }
