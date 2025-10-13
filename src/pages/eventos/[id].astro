@@ -17,7 +17,7 @@ if (!event) {
   return Astro.redirect('/eventos');
 }
 
-const response = await fetch(`http://localhost:4321/api/gallery/${id}`)
+const response = await fetch(`${Astro.site}api/gallery/${id}`)
 const data = await response.json();
 
 function formatDate(dateString: string) {

@@ -3,8 +3,8 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 
 import icon from 'astro-icon';
-
 import react from '@astrojs/react';
+import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,7 +13,8 @@ export default defineConfig({
       tailwindcss(),
     ]
   },
-  output: 'static',
+  output: 'hybrid',
+  adapter: cloudflare(),
   site: 'https://landing.pages.dev',
   integrations: [icon(), react()],
 });
