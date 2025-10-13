@@ -4,3 +4,4 @@ compatibility_date = "2025-07-04"
 # For static sites (output: 'static')
 [env.production]
 name = "landing"
+preview_urls = true
