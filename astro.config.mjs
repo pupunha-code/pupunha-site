@@ -13,7 +13,7 @@ export default defineConfig({
       tailwindcss(),
     ]
   },
-  output: 'hybrid',
+  output: 'server',
   adapter: cloudflare(),
   site: 'https://landing.pages.dev',
   integrations: [icon(), react()],

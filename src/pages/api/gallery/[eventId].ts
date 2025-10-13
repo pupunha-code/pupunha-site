@@ -1,26 +1,28 @@
 import type { APIRoute } from 'astro';
 import { S3Client, ListObjectsV2Command } from '@aws-sdk/client-s3';
-import { eventos } from '../../../../eventos-data';
 
-export async function getStaticPaths() {
-  return eventos.map((event) => ({
-    params: { eventId: event.id },
-  }));
-}
+export const prerender = false;
 
 const R2_ACCOUNT_ID = import.meta.env.R2_ACCOUNT_ID
 const R2_ACCESS_KEY_ID = import.meta.env.R2_ACCESS_KEY_ID
 const R2_SECRET_ACCESS_KEY = import.meta.env.R2_SECRET_ACCESS_KEY
 const R2_BUCKET_NAME = import.meta.env.R2_BUCKET_NAME
 
-const s3Client = new S3Client({
-  region: 'auto',
-  endpoint: `https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
-  credentials: {
-    accessKeyId: R2_ACCESS_KEY_ID,
-    secretAccessKey: R2_SECRET_ACCESS_KEY,
-  },
-});
+// Check if all required environment variables are present
+const hasRequiredEnvVars = R2_ACCOUNT_ID && R2_ACCESS_KEY_ID && R2_SECRET_ACCESS_KEY && R2_BUCKET_NAME;
+
+let s3Client: S3Client | null = null;
+
+if (hasRequiredEnvVars) {
+  s3Client = new S3Client({
+    region: 'auto',
+    endpoint: `https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
+    credentials: {
+      accessKeyId: R2_ACCESS_KEY_ID,
+      secretAccessKey: R2_SECRET_ACCESS_KEY,
+    },
+  });
+}
 
 export const GET: APIRoute = async ({ params }) => {
   const { eventId } = params;
@@ -28,6 +30,16 @@ export const GET: APIRoute = async ({ params }) => {
   if (!eventId) {
     return new Response(JSON.stringify({ error: 'Event ID is required' }), {
       status: 400,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+
+  // Return empty gallery if environment variables are not configured
+  if (!hasRequiredEnvVars || !s3Client) {
+    return new Response(JSON.stringify({ 
+      images: [],
+      message: 'Gallery service not configured'
+    }), {
       headers: { 'Content-Type': 'application/json' }
     });
   }
