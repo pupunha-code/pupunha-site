@@ -9,6 +9,11 @@ import cloudflare from '@astrojs/cloudflare';
 // https://astro.build/config
 export default defineConfig({
   vite: {
+    resolve: import.meta.env.PROD ? {
+      alias: {
+        "react-dom/server": "react-dom/server.edge",
+      },
+    } : undefined,
     plugins: [
       tailwindcss(),
     ]
