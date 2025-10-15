@@ -1,8 +1,4 @@
 name = "pupunha-code"
 compatibility_date = "2025-07-04"
-compatibility_flags = ["nodejs_compat"]
-main = "dist/_worker.js"
-
 [env.production]
 name = "landing"
-main = "dist/_worker.js"
