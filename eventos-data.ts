@@ -69,29 +69,3 @@ export async function getEventWithGallery(eventId: string): Promise<Event | unde
     return event;
   }
 }
-
-// Function to get all events with their gallery data populated
-export async function getAllEventsWithGalleries(): Promise<Event[]> {
-  const eventsWithGalleries = await Promise.all(
-    eventos.map(async (event) => {
-      if (event.gallery?.enabled) {
-        try {
-          const galleryImages = await getEventGalleryImages(event.id);
-          return {
-            ...event,
-            gallery: {
-              ...event.gallery,
-              images: galleryImages
-            }
-          };
-        } catch (error) {
-          console.error(`Error fetching gallery for event ${event.id}:`, error);
-          return event;
-        }
-      }
-      return event;
-    })
-  );
-
-  return eventsWithGalleries;
-}
