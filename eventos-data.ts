@@ -7,16 +7,19 @@ export interface Event {
   type: 'meetup' | 'workshop' | 'hackathon' | 'tech-talk';
   status: 'upcoming' | 'past' | 'cancelled';
   participants?: number;
-  thumbnail: string; // Main image for the event card
+  thumbnail: string;
   gallery?: {
-    enabled: boolean; // Whether to show gallery
-    customUrls?: string[]; // Optional: override R2 URLs with custom ones
+    enabled: boolean;
+    images?: {
+      url: string;
+      alt?: string;
+    }[];
   };
   organizer?: string;
   tags: string[];
 }
 
-import { getEventThumbnail } from './src/utils/r2';
+import { getEventThumbnail, getEventGalleryImages } from './src/utils/r2';
 
 export const eventos: Event[] = [
   {
@@ -43,4 +46,52 @@ export function getEventById(id: string): Event | undefined {
 
 export function getEventsByStatus(status: Event['status']): Event[] {
   return eventos.filter(event => event.status === status);
+}
+
+// Function to populate gallery data at build time
+export async function getEventWithGallery(eventId: string): Promise<Event | undefined> {
+  const event = getEventById(eventId);
+  if (!event || !event.gallery?.enabled) {
+    return event;
+  }
+
+  try {
+    const galleryImages = await getEventGalleryImages(eventId);
+    return {
+      ...event,
+      gallery: {
+        ...event.gallery,
+        images: galleryImages
+      }
+    };
+  } catch (error) {
+    console.error(`Error fetching gallery for event ${eventId}:`, error);
+    return event;
+  }
+}
+
+// Function to get all events with their gallery data populated
+export async function getAllEventsWithGalleries(): Promise<Event[]> {
+  const eventsWithGalleries = await Promise.all(
+    eventos.map(async (event) => {
+      if (event.gallery?.enabled) {
+        try {
+          const galleryImages = await getEventGalleryImages(event.id);
+          return {
+            ...event,
+            gallery: {
+              ...event.gallery,
+              images: galleryImages
+            }
+          };
+        } catch (error) {
+          console.error(`Error fetching gallery for event ${event.id}:`, error);
+          return event;
+        }
+      }
+      return event;
+    })
+  );
+
+  return eventsWithGalleries;
 }

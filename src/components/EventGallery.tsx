@@ -4,10 +4,8 @@ interface EventGalleryProps {
   eventId: string;
   eventTitle: string;
   images?: {
-    key: string;
     url: string;
-    lastModified?: string;
-    size?: number;
+    alt?: string;
   }[];
 }
 
@@ -33,16 +31,16 @@ export default function EventGallery({ eventId, eventTitle, images = [] }: Event
   return (
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {images.map((imageUrl, index) => (
+        {images.map((image, index) => (
           <div
             key={index}
             className="bg-neutral-800 rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300 cursor-pointer group"
-            onClick={() => openLightbox(imageUrl.url)}
+            onClick={() => openLightbox(image.url)}
           >
             <div className="aspect-video relative">
               <img
-                src={imageUrl.url }
-                alt={`${eventTitle} - Foto ${index + 1}`}
+                src={image.url}
+                alt={image.alt || `${eventTitle} - Foto ${index + 1}`}
                 className="w-full h-full object-cover"
                 loading="lazy"
               />

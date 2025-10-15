@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getEventById, eventos } from '../../../eventos-data';
+import { getEventWithGallery, eventos } from '../../../eventos-data';
 import { Icon } from 'astro-icon/components';
 import EventGallery from '../../components/EventGallery.tsx';
 
@@ -11,14 +11,11 @@ export async function getStaticPaths() {
 }
 
 const { id } = Astro.params;
-const event = getEventById(id!);
+const event = await getEventWithGallery(id!);
 
 if (!event) {
   return Astro.redirect('/eventos');
 }
-
-const response = await fetch(`${Astro.site}api/gallery/${id}`)
-const data = await response.json();
 
 function formatDate(dateString: string) {
   const date = new Date(dateString);
@@ -30,25 +27,6 @@ function formatDate(dateString: string) {
   });
 }
 
-function getEventTypeIcon(type: string) {
-  switch (type) {
-    case 'meetup': return '🤝';
-    case 'workshop': return '🛠️';
-    case 'hackathon': return '🏆';
-    case 'tech-talk': return '💻';
-    default: return '📅';
-  }
-}
-
-function getEventTypeColor(type: string) {
-  switch (type) {
-    case 'meetup': return 'text-primary';
-    case 'workshop': return 'text-secondary';
-    case 'hackathon': return 'text-accent';
-    case 'tech-talk': return 'text-primary';
-    default: return 'text-neutral-400';
-  }
-}
 ---
 
 <Layout
@@ -126,7 +104,7 @@ function getEventTypeColor(type: string) {
               client:load
               eventId={event.id}
               eventTitle={event.title}
-              images={data.images}
+              images={event.gallery?.images || []}
             />
           </section>
         )}
