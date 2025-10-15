@@ -2,6 +2,7 @@
 import { cn } from '../lib/utils';
 import Logo from './Logo.astro';
 import Button from './Button.astro';
+import { Icon } from 'astro-icon/components';
 
 const currentPath = Astro.url.pathname;
 
@@ -10,12 +11,13 @@ const navItems = [
   { href: '/eventos', label: 'Eventos e Meetups' },
   { href: '/devs', label: 'Devs' },
   { href: '/como-participar', label: 'Como participar' },
+  { href: '/contato', label: 'Contato' },
   { href: '/blog', label: 'Blog' }
 ];
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-neutral-900/90 backdrop-blur-md border-b border-neutral-800">
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="container mx-auto lg:px-8">
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
       <div class="flex-shrink-0">
@@ -43,18 +45,10 @@ const navItems = [
       <div class="md:hidden">
         <button 
           id="mobile-menu-button"
-          class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-secondary hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-secondary"
+          class="border-none shadow-none p-2 rounded-md text-white hover:text-secondary bg-transparent focus:outline-none focus:ring-2 focus:ring-inset focus:ring-secondary focus:ring-offset-0 focus:ring-offset-transparent"
           aria-expanded="false"
         >
-          <span class="sr-only">Open main menu</span>
-          <!-- Hamburger icon -->
-          <svg id="menu-icon" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-          <!-- Close icon -->
-          <svg id="close-icon" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          <Icon name="menu" class="h-6 w-6 text-white" />
         </button>
       </div>
     </div>

@@ -1,0 +1,180 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+import { DISCORD_URL, GITHUB_URL } from '../constants/site';
+import Button from '../components/Button.astro';
+---
+
+<Layout
+  title="Contato - PupunhaCode"
+  description="Entre em contato com a PupunhaCode para parcerias, colaborações e oportunidades. Conecte-se com a comunidade de desenvolvedores do Amapá."
+  keywords={['contato pupunha code', 'parcerias tech amapá', 'colaboração desenvolvedores', 'comunidade tech', 'eventos tech']}
+>
+  <main class="bg-neutral-900 min-h-screen pt-16">
+    <div class="container mx-auto px-4 py-16">
+      <div class="max-w-6xl mx-auto">
+        <!-- Header Section -->
+        <div class="text-center mb-16">
+          <h1 class="text-3xl sm:text-4xl font-bold mb-6 text-white font-azeret">
+            Entre em Contato
+          </h1>
+          <p class="text-xl text-neutral-300 max-w-2xl mx-auto">
+            Quer tirar alguma dúvida ou tem uma proposta de parceria? Estamos sempre abertos a novas ideias e colaborações!
+          </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+          <!-- Contact Information -->
+          <div class="space-y-8">
+            <!-- Quick Contact -->
+            <div class="bg-neutral-800 border border-neutral-700 rounded-xl p-8 text-center">
+              <p class="text-neutral-300 mb-8 text-lg">
+                Para parcerias, propostas de colaboração ou qualquer dúvida, envie um email para:
+              </p>
+              <a
+                href="mailto:lgoesmontes@gmail.com"
+                class="inline-block bg-secondary hover:bg-secondary/90 text-white px-8 py-4 text-lg font-semibold rounded-lg transition-colors mb-6"
+              >
+                lgoesmontes@gmail.com
+              </a>
+              <p class="text-neutral-400 text-sm">
+                Respondemos em até 48 horas
+              </p>
+            </div>
+
+            <!-- Contact Channels -->
+            <div class="bg-neutral-800 border border-neutral-700 rounded-xl p-8">
+              <h2 class="text-2xl font-bold text-white font-azeret mb-6">
+                Outros Canais
+              </h2>
+              
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="flex items-center space-x-4 p-4 bg-neutral-700 rounded-lg">
+                  <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Icon name="discord" class="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 class="text-white font-semibold mb-1">Discord</h3>
+                    <a
+                      href={DISCORD_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-neutral-300 hover:text-secondary transition-colors"
+                    >
+                      Servidor da Comunidade
+                    </a>
+                  </div>
+                </div>
+
+                <div class="flex items-center space-x-4 p-4 bg-neutral-700 rounded-lg">
+                  <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Icon name="github" class="w-6 h-6 text-accent" />
+                  </div>
+                  <div>
+                    <h3 class="text-white font-semibold mb-1">GitHub</h3>
+                    <a
+                      href={GITHUB_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-neutral-300 hover:text-secondary transition-colors"
+                    >
+                      @pupunhacode
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Partnership Types -->
+            <div class="bg-neutral-800 border border-neutral-700 rounded-xl p-8">
+              <h2 class="text-2xl font-bold text-white font-azeret mb-6">
+                Como Podemos Colaborar
+              </h2>
+              
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                  <div class="flex items-start space-x-3">
+                    <div>
+                      <h3 class="text-white font-semibold">Patrocínio de Eventos</h3>
+                      <p class="text-neutral-400 text-sm">
+                        Apoie nossos meetups e workshops
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start space-x-3">
+                    <div>
+                      <h3 class="text-white font-semibold">Colaboração em Projetos</h3>
+                      <p class="text-neutral-400 text-sm">
+                        Desenvolva soluções open source
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="space-y-4">
+                  <div class="flex items-start space-x-3">
+                    <div>
+                      <h3 class="text-white font-semibold">Mentoria</h3>
+                      <p class="text-neutral-400 text-sm">
+                        Compartilhe conhecimento
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start space-x-3">
+                    <div>
+                      <h3 class="text-white font-semibold">Oportunidades de Carreira</h3>
+                      <p class="text-neutral-400 text-sm">
+                        Conecte-se com talentos locais
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Community Values -->
+        <section class="mt-16 text-center">
+          <h2 class="text-2xl font-bold text-white font-azeret mb-8">
+            Por que Parcerias com a PupunhaCode?
+          </h2>
+          
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-neutral-800 border border-neutral-700 rounded-lg p-6">
+              <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Icon name="diagram" class="w-6 h-6 text-secondary" />
+              </div>
+              <h3 class="text-white font-semibold mb-2">Alcance Local</h3>
+              <p class="text-neutral-400 text-sm">
+                Conecte-se com desenvolvedores do Amapá
+              </p>
+            </div>
+
+            <div class="bg-neutral-800 border border-neutral-700 rounded-lg p-6">
+              <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Icon name="book" class="w-6 h-6 text-primary" />
+              </div>
+              <h3 class="text-white font-semibold mb-2">Comunidade Ativa</h3>
+              <p class="text-neutral-400 text-sm">
+                Desenvolvedores engajados
+              </p>
+            </div>
+
+            <div class="bg-neutral-800 border border-neutral-700 rounded-lg p-6">
+              <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Icon name="handshake" class="w-6 h-6 text-accent" />
+              </div>
+              <h3 class="text-white font-semibold mb-2">Impacto Real</h3>
+              <p class="text-neutral-400 text-sm">
+                Fortaleça o ecossistema tech da Amazônia
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</Layout>
