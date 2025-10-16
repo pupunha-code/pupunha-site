@@ -37,4 +37,9 @@ export const devs: Dev[] = [
     "bio": "",
     "github": "https://github.com/Quinntas",
   },
+  {
+    "name": "Kayky Azevedo",
+    "bio": "Desenvolvedor e futuro DevOps",
+    "github": "https://github.com/kbrum",
+  },
 ]
