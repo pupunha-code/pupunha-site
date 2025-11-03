@@ -39,7 +39,7 @@ export const devs: Dev[] = [
   },
   {
     "name": "Kayky Azevedo",
-    "bio": "Desenvolvedor e futuro DevOps",
+    "bio": "Engenheiro DevOps",
     "github": "https://github.com/kbrum",
   },
 ]
