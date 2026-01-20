@@ -46,5 +46,11 @@ export const devs: Dev[] = [
     "name": "Rhian Castro",
     "bio": "Desenvolvedor fullstack.",
     "github": "https://github.com/orcololo",
+  },
+  {
+    "name": "Elton Souza",
+    "bio": "Engenheiro de Software",
+    "github": "https://github.com/notlesz",
+    "linkedin": "https://www.linkedin.com/in/elton-souza-br/"
   }
 ]
