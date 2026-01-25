@@ -1,4 +1,4 @@
-import { ConferenceEvent, EventDay, Session, Speaker } from '@/types';
+import type { ConferenceEvent, EventDay, Session, Speaker } from "../../types";
 
 /**
  * Helper to create ISO datetime string from date and time
