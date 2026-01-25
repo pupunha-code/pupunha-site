@@ -22,6 +22,17 @@ const speakers: Speaker[] = [
       linkedin: 'https://www.linkedin.com/in/lucasquintela23/',
     },
   },
+   {
+    id: 'luma-goes',
+    name: 'Luma Góes',
+    title: 'Software Engineer',
+    company: 'ArcoTech',
+    bio: 'Software Engineer com experiência em desenvolvimento de software focado em soluções práticas e eficientes.',
+    links: {
+      github: 'https://github.com/lumamontes',
+      linkedin: 'https://www.linkedin.com/in/lumamontes/',
+    },
+  },
 ];
 
 // Sessions for Day 1
@@ -46,11 +57,20 @@ const day1Sessions: Session[] = [
     type: 'talk',
   },
   {
+    id: 'pupunha-conf',
+    title: 'Pupunha Conf: Um app de eventos com React 19, Expo e Zustand',
+    description: 'Apresentação do Pupunha Conf, um aplicativo de eventos desenvolvido com React 19, Expo e Zustand, focado em usabilidade e experiência do usuário.',
+    startTime: createDateTime(day1Date, '14:50'),
+    endTime: createDateTime(day1Date, '15:25'),
+    speakers: ['luma-goes'],
+    type: 'talk',
+  },
+  {
     id: 'perguntas-networking',
     title: 'Perguntas e Networking',
     description: 'Momento aberto para perguntas, troca de experiências e networking entre os participantes.',
-    startTime: createDateTime(day1Date, '14:45'),
-    endTime: createDateTime(day1Date, '15:30'),
+    startTime: createDateTime(day1Date, '15:25'),
+    endTime: createDateTime(day1Date, '15:45'),
     speakers: [],
     type: 'panel',
   },
