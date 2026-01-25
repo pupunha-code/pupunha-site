@@ -1,0 +1,169 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE_URL } from '../constants/site';
+
+const title = 'Política de Privacidade - PupunhaCode';
+const description = 'Política de privacidade da comunidade PupunhaCode. Saiba como protegemos e utilizamos suas informações.';
+---
+
+<Layout title={title} description={description}>
+  <main class="container mx-auto px-4 py-12 bg-gray-900">
+    <div class=" text-gray-300 p-8 rounded-lg">
+      <h1 class="text-3xl font-bold text-green-400 mb-8 pb-4 border-b border-green-400">Política de Privacidade</h1>
+      
+      <p class="text-gray-300 mb-6">
+        <strong>Última atualização:</strong> Janeiro de 2026
+      </p>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-bold text-green-400 mb-4">1. Quem Somos</h2>
+        <p class="text-gray-300 leading-relaxed mb-4">
+          A PupunhaCode é uma comunidade de desenvolvedores do Amapá, Brasil. Nossa missão é conectar 
+          desenvolvedores locais, promover o compartilhamento de conhecimento e fomentar o crescimento 
+          da tecnologia na região amazônica.
+        </p>
+        <p class="text-gray-300 leading-relaxed">
+          <strong>Contato:</strong> Você pode nos encontrar em nosso servidor Discord ou repositório GitHub.
+        </p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-bold text-green-400 mb-4">2. Informações que Coletamos</h2>
+        
+        <h3 class="text-lg font-semibold text-cyan-400 mb-3">2.1 Informações Fornecidas Voluntariamente</h3>
+        <ul class="text-gray-300 space-y-2 mb-4 list-disc pl-6">
+          <li>Nome e perfil GitHub (quando você contribui para nosso diretório de desenvolvedores)</li>
+          <li>Informações de contato compartilhadas em eventos ou interações da comunidade</li>
+          <li>Conteúdo que você compartilha em nossas plataformas (Discord, GitHub)</li>
+        </ul>
+
+        <h3 class="text-lg font-semibold text-cyan-400 mb-3">2.2 Informações Coletadas Automaticamente</h3>
+        <ul class="text-gray-300 space-y-2 mb-4 list-disc pl-6">
+          <li>Dados básicos de navegação em nosso site (através do Cloudflare Analytics)</li>
+          <li>Informações técnicas necessárias para o funcionamento das plataformas</li>
+        </ul>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-bold text-green-400 mb-4">3. Como Utilizamos suas Informações</h2>
+        <ul class="text-gray-300 space-y-2 list-disc pl-6">
+          <li>Manter e exibir o diretório público de desenvolvedores da comunidade</li>
+          <li>Facilitar conexões entre membros da comunidade</li>
+          <li>Organizar eventos e atividades comunitárias</li>
+          <li>Melhorar nossa plataforma e experiência do usuário</li>
+          <li>Comunicar novidades e oportunidades relevantes para a comunidade</li>
+        </ul>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-bold text-green-400 mb-4">4. Compartilhamento de Informações</h2>
+        <p class="text-gray-300 leading-relaxed mb-4">
+          <strong>Não vendemos, alugamos ou comercializamos suas informações pessoais.</strong>
+        </p>
+        
+        <h3 class="text-lg font-semibold text-cyan-400 mb-3">Compartilhamos informações apenas quando:</h3>
+        <ul class="text-gray-300 space-y-2 list-disc pl-6">
+          <li>Você consente explicitamente (como ao adicionar seu perfil ao diretório público)</li>
+          <li>É necessário para o funcionamento das plataformas que utilizamos (Discord, GitHub, Cloudflare)</li>
+          <li>Exigido por lei ou para proteger direitos legais</li>
+        </ul>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-bold text-green-400 mb-4">5. Segurança dos Dados</h2>
+        <p class="text-gray-300 leading-relaxed mb-4">
+          Implementamos medidas de segurança técnicas e administrativas para proteger suas informações:
+        </p>
+        <ul class="text-gray-300 space-y-2 list-disc pl-6">
+          <li>Site hospedado em infraestrutura segura (Cloudflare Pages)</li>
+          <li>Acesso restrito aos dados da comunidade</li>
+          <li>Monitoramento regular de nossas plataformas</li>
+          <li>Práticas de desenvolvimento seguro em nossos projetos</li>
+        </ul>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-bold text-green-400 mb-4">6. Seus Direitos</h2>
+        <p class="text-gray-300 leading-relaxed mb-4">Você tem o direito de:</p>
+        <ul class="text-gray-300 space-y-2 list-disc pl-6">
+          <li><strong>Acessar:</strong> Saber quais informações temos sobre você</li>
+          <li><strong>Corrigir:</strong> Atualizar informações incorretas ou desatualizadas</li>
+          <li><strong>Excluir:</strong> Remover suas informações de nossos sistemas</li>
+          <li><strong>Limitar:</strong> Restringir como usamos suas informações</li>
+          <li><strong>Portabilidade:</strong> Receber uma cópia de suas informações</li>
+        </ul>
+        <p class="text-gray-300 leading-relaxed mt-4">
+          Para exercer esses direitos, entre em contato conosco através de nossas plataformas oficiais.
+        </p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-bold text-green-400 mb-4">7. Retenção de Dados</h2>
+        <p class="text-gray-300 leading-relaxed">
+          Mantemos suas informações apenas pelo tempo necessário para os fins descritos nesta política:
+        </p>
+        <ul class="text-gray-300 space-y-2 mt-4 list-disc pl-6">
+          <li>Perfis no diretório: enquanto você desejar fazer parte da comunidade</li>
+          <li>Dados de navegação: conforme política da Cloudflare (máximo 30 dias)</li>
+          <li>Comunicações: pelo tempo necessário para resposta e follow-up</li>
+        </ul>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-bold text-green-400 mb-4">8. Plataformas de Terceiros</h2>
+        <p class="text-gray-300 leading-relaxed mb-4">
+          Nossa comunidade utiliza plataformas externas que possuem suas próprias políticas de privacidade:
+        </p>
+        <ul class="text-gray-300 space-y-2 list-disc pl-6">
+          <li><strong>Discord:</strong> Para comunicação da comunidade</li>
+          <li><strong>GitHub:</strong> Para projetos e colaborações de código</li>
+          <li><strong>Cloudflare:</strong> Para hospedagem e analytics do site</li>
+        </ul>
+        <p class="text-gray-300 leading-relaxed mt-4">
+          Recomendamos que você revise as políticas de privacidade dessas plataformas.
+        </p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-bold text-green-400 mb-4">9. Menores de Idade</h2>
+        <p class="text-gray-300 leading-relaxed">
+          Nossa comunidade é aberta a desenvolvedores de todas as idades. Para menores de 18 anos, 
+          recomendamos supervisão de pais ou responsáveis ao participar de nossas atividades online.
+        </p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-bold text-green-400 mb-4">10. Alterações nesta Política</h2>
+        <p class="text-gray-300 leading-relaxed">
+          Podemos atualizar esta política periodicamente. Mudanças significativas serão comunicadas 
+          através de nossas plataformas oficiais. A data da última atualização está sempre indicada 
+          no início deste documento.
+        </p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-bold text-green-400 mb-4">11. Contato</h2>
+        <p class="text-gray-300 leading-relaxed mb-4">
+          Para questões sobre privacidade ou exercer seus direitos, entre em contato:
+        </p>
+        <ul class="text-gray-300 space-y-2 list-disc pl-6">
+          <li><strong>Discord:</strong> Servidor oficial da PupunhaCode</li>
+          <li><strong>GitHub:</strong> Issues no repositório da comunidade</li>
+          <li><strong>Site:</strong> {SITE_URL}</li>
+        </ul>
+      </section>
+
+      <div class="mt-8 p-4 bg-gray-800 rounded border-l-4 border-green-400">
+        <p class="text-green-400 font-semibold mb-2">💡 Transparência</p>
+        <p class="text-gray-300 text-sm">
+          Como comunidade de desenvolvedores, valorizamos transparência e código aberto. 
+          Nossa política reflete nosso compromisso com práticas éticas e respeito à privacidade.
+        </p>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a href="/" class="text-cyan-400 hover:text-cyan-300 font-mono text-sm">← Voltar ao início</a>
+      </div>
+    </div>
+  </main>
+</Layout>
